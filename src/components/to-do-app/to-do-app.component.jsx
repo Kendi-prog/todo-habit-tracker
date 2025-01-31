@@ -35,12 +35,7 @@ const Todo = () => {
 
     return (
         <div>
-            <h2>To-Do List</h2>
-            <input 
-            type="text"
-            value={task}
-            onChange={handleInputChange}
-            placeholder="Add new task"/>
+          
 
             <button onClick={addTask}>Add Task</button>
 
