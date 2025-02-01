@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import Dropdown from "../dropdown/dropdown.component";
 
 const TaskInput = ({ addTask, cancelTask }) => {
     const [task, setTask] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [frequency, setFrequency] = useState('no repeat');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState('Personal');
     const [notes, setNotes] = useState('');
 
     const handleAddTask = () => {
@@ -15,11 +16,14 @@ const TaskInput = ({ addTask, cancelTask }) => {
             setTask('');
             setStartDate('');
             setEndDate('');
-            setFrequency('');
-            setCategory('');
+            setFrequency('no repeat');
+            setCategory('Personal');
             setNotes('');
         }
     }
+
+    const frequencyOptions = ['no repeat', 'daily', 'weekly', 'monthly', 'yearly'];
+    const categoryOptions = ['Personal', 'Official'];
 
     return (
         <div>
@@ -41,6 +45,26 @@ const TaskInput = ({ addTask, cancelTask }) => {
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
             placeholder="10:00 am"/>
+
+            <Dropdown 
+            label="Frequency"
+            options={frequencyOptions}
+            selected={frequency}
+            setSelected={setFrequency}/>
+
+            <Dropdown 
+            label="Category"
+            options={categoryOptions}
+            selected={category}
+            setSelected={setCategory}/>
+
+            <textarea 
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="Add note"/>
+
+            <button onClick={handleAddTask}>Save</button>
+            <button onClick={cancelTask}>Cancel</button>
         </div>
     );
 }
