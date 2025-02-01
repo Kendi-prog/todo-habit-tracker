@@ -20,9 +20,11 @@ const Dropdown = ({ label, options, selected, setSelected }) => {
             {isOpen && (
                 <ul>
                     {options.map((option, index) => {
-                        <li key={index} onClick={() => handleOptionClick(option)}>
-                            {option}
-                        </li>
+                        return (
+                            <li key={index} onClick={() => handleOptionClick(option)}>
+                                {option}
+                            </li>
+                        )
                     })}
                 </ul>
                 )}

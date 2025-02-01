@@ -14,9 +14,10 @@ const Todo = () => {
             <h2>To-do List</h2>
             <TaskInput addTask={addTask} cancelTask={() => {}}/>
             <ul>
-                {tasks.map((task, index) => (
+                {tasks.map((task, index) => {
+                    return (
                     <li key={index}>{task.task} - {task.startDate} to {task.endDate}</li>
-                ))}
+                )})}
             </ul>
             
         </div>
