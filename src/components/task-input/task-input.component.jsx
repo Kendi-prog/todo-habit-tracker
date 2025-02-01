@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Dropdown from "../dropdown/dropdown.component";
 
-const TaskInput = ({ addTask, cancelTask }) => {
+const TaskInput = ({ addTask, removeTask }) => {
     const [task, setTask] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
@@ -64,7 +64,7 @@ const TaskInput = ({ addTask, cancelTask }) => {
             placeholder="Add note"/>
 
             <button onClick={handleAddTask}>Save</button>
-            <button onClick={cancelTask}>Cancel</button>
+            <button onClick={removeTask}>Cancel</button>
         </div>
     );
 }

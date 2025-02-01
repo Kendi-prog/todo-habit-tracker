@@ -1,57 +1,22 @@
 import React, { useState } from "react";
+import TaskInput from "../task-input/task-input.component";
 
 const Todo = () => {
-    const [tasks, setTasks] = useState([]);
-    const [task, setTask] = useState('');
+    const [tasks, setTasks] = useState('');
 
-    const handleInputChange = (e) => {
-        setTask(e.target.value);
+    const addTask = (newTask) => {
+        setTasks([...tasks, newTask]);
+    
     }
-
-    const addTask = () => {
-        if(task) {
-            setTasks([...tasks, { text: task, completed: false }]);
-
-            setTask('');
-        }
-    }
-
-    const removeTask = (taskToRemove) => {
-        const newTasks = tasks.filter((_, i) => i !== taskToRemove);
-
-        setTasks(newTasks);
-    }
-
-    const toggleTaskCompletion = (index) => {
-        const newTasks = tasks.map((task, i) => {
-            if(i === index) {
-                return {...task, completed: !task.completed};
-            }
-            return task;
-        });
-        setTasks(newTasks);
-    }
-
 
     return (
         <div>
-          
-
-            <button onClick={addTask}>Add Task</button>
-
+            <h2>To-do List</h2>
+            <TaskInput addTask={addTask} cancelTask={() => {}}/>
             <ul>
-                {
-                    tasks.length === 0 ? ( 
-                    <p>No Tasks Available</p> 
-                    ) : (
-                    tasks.map((addedTask, index) => (
-                        <li key={index} style={{ textDecoration : addedTask.completed ? 'line-through' : 'none'}}>
-                            {addedTask.text}
-                            <button onClick={() => toggleTaskCompletion(index)}>Done</button>
-                            <button onClick={() => removeTask(index)}>Remove</button>
-                        </li>
-                    )))
-                }
+                {tasks.map((task, index) => (
+                    <li key={index}>{task.task} - {task.startDate} to {task.endDate}</li>
+                ))}
             </ul>
             
         </div>
