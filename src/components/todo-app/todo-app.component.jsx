@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TaskInput from "../task-input/task-input.component";
 
 const Todo = () => {
-    const [tasks, setTasks] = useState('');
+    const [tasks, setTasks] = useState([]);
 
     const addTask = (newTask) => {
         setTasks([...tasks, newTask]);
@@ -11,7 +11,6 @@ const Todo = () => {
 
     return (
         <div>
-            <h2>To-do List</h2>
             <TaskInput addTask={addTask} cancelTask={() => {}}/>
             <ul>
                 {tasks.map((task, index) => {
