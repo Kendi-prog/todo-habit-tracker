@@ -1,5 +1,7 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
+
 import Dropdown from "../dropdown/dropdown.component";
+import './task-input.styles.scss';
 
 const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
     const [task, setTask] = useState('');
@@ -114,7 +116,7 @@ const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
                         <input 
                         type="radio"
                         value="Personal"
-                        checked={category === Personal}
+                        checked={category === 'Personal'}
                         onChange={() => setCategory('Personal')}
                         />
                         Personal
@@ -123,7 +125,7 @@ const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
                         <input 
                         type="radio"
                         value="Official"
-                        checked={category === Official}
+                        checked={category === 'Official'}
                         onChange={() => setCategory('Official')}
                         />
                         Official
