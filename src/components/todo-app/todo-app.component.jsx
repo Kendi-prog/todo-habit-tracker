@@ -15,7 +15,7 @@ const Todo = () => {
             <ul>
                 {tasks.map((task, index) => {
                     return (
-                    <li key={index}>{task.task} - {task.startDate} to {task.endDate}</li>
+                    <li key={index}>{task.task} - {task.start} to {task.end}</li>
                 )})}
             </ul>
             
