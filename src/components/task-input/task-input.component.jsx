@@ -138,8 +138,8 @@ const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
                     placeholder="Add note"
                     />
 
-                <button onClick={handleAddTask}>Save</button>
-                <button onClick={removeTask}>Cancel</button> 
+                <button className="save-button" onClick={handleAddTask}>Save</button>
+                <button className="cancel-button" onClick={removeTask}>Cancel</button> 
             </div>    
         </div>
     );
