@@ -40,6 +40,10 @@ const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
         setNotes('');
     }
 
+    const handleCancelTask = () => {
+        resetForm();
+    }
+
            
     const frequencyOptions = ['no repeat', 'daily', 'weekly', 'monthly', 'yearly'];
     //const categoryOptions = ['Personal', 'Official'];
@@ -139,7 +143,7 @@ const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
                     />
 
                 <button className="save-button" onClick={handleAddTask}>Save</button>
-                <button className="cancel-button" onClick={removeTask}>Cancel</button> 
+                <button className="cancel-button" onClick={handleCancelTask}>Cancel</button> 
             </div>    
         </div>
     );
