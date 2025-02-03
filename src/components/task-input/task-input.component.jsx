@@ -52,14 +52,14 @@ const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
     return (
         <div className="task-input">
             <div className="category-counts">
-                <div className="category-box">
+                <div className="category-box personal">
                     <h3>Personal</h3>
-                    <p>{personalCount} </p>
+                    <p>{personalCount} </p>   
                 </div>
-                <div className="category-box">
+                <div className=" category-box official">
                     <h3>Official</h3>
                     <p>{officialCount} </p>
-                </div>
+                </div>    
             </div>
             {/* <div className="pinned-tasks">
                 <Dropdown 

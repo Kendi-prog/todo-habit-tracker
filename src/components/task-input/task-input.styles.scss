@@ -8,14 +8,23 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 20px;
+        align-items: center;
+        font-weight: bold;
 
         .category-box {
             flex: 1;
             margin-right: 10px;
             padding: 10px;
-            background-color: #e9ecef;
             border-radius: 5px;
             text-align: center;
+
+            &.personal {
+               background-color: #d18898; 
+            }
+
+            &.official {
+                background-color: #888ad1;
+            }
 
             h3 {
                 margin: 0;
@@ -47,13 +56,14 @@
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
-            border: 1px solid #ced4da;
+            border: 3px solid #ced4da;
             border-radius: 5px;
         }
 
         .date-time {
             display: flex;
             justify-content: space-between;
+            
 
             label {
                 flex: 1;
