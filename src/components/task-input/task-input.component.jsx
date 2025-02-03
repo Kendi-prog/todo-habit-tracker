@@ -13,6 +13,7 @@ const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
     const [category, setCategory] = useState('Personal');
     const [notes, setNotes] = useState('');
 
+
     const handleAddTask = () => {
         if(task && startDate && startTime) {
             const newTask = {
@@ -60,7 +61,7 @@ const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
                     <p>{officialCount} </p>
                 </div>
             </div>
-            <div className="pinned-tasks">
+            {/* <div className="pinned-tasks">
                 <Dropdown 
                 options={frequencyOptions}
                 selected={frequency}
@@ -68,7 +69,7 @@ const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
                 />
 
                 <span>Pinned</span>
-            </div>
+            </div> */}
             <div className="input-area">
                 <h2>Add new task</h2>
                 <input 

@@ -11,10 +11,11 @@ const Dropdown = ({ label, options, selected, setSelected }) => {
         setSelected(option);
         setIsOpen(false);
     }
+
     return (
         <div>
             <div onClick={toggleDropdown} style={{ cursor: 'pointer', border: '1 px solid #ccc', padding: '8px'}}>
-                {label} : {selected}
+                {label} : {selected || "select..."}
                 <span style={{ marginLeft: '10px' }} className="fa fa-chevron-down"></span>
             </div>
             {isOpen && (
