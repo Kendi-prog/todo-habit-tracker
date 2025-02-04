@@ -61,15 +61,6 @@ const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
                     <p>{officialCount} </p>
                 </div>    
             </div>
-            {/* <div className="pinned-tasks">
-                <Dropdown 
-                options={frequencyOptions}
-                selected={frequency}
-                setSelected={setFrequency}
-                />
-
-                <span>Pinned</span>
-            </div> */}
             <div className="input-area">
                 <h2>Add new task</h2>
                 <input 
@@ -115,6 +106,13 @@ const TaskInput = ({ addTask, removeTask, personalCount, officialCount }) => {
                         onChange={(e) => setEndTime(e.target.value)} 
                         />
                     </label>
+                </div>
+                <div className="frequency">
+                    <Dropdown 
+                    options={frequencyOptions}
+                    selected={frequency}
+                    setSelected={setFrequency}
+                    />
                 </div>
                 <div>
                     <label>
