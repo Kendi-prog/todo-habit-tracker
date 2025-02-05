@@ -1,12 +1,11 @@
+import ToDo from "./ToDo App/components/todo.main/todo.main.component";
 
-import './App.css';
-import Todo from './components/todo-app/todo-app.component';
 
 
 function App() {
   return (
     <div className="App">
-      <Todo />
+     <ToDo />
     </div>
   );
 }
