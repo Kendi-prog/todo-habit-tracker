@@ -21,8 +21,16 @@ const TaskManagement = () => {
 
     const updateTask = (id, updatedText) => {
         setTasks(tasks.map(task => (task.id === id ? { ...task, task: updatedText } : task)));
-        setEditingTask(null); // Reset editing state
+        setEditingTask(null);
     };
+
+    const toggleTaskCompletion = (id) => {
+        setTasks(tasks.map(task => (
+            task.id === id ? (
+                {...task, completed: !task.completed}
+            ) : task
+        )));
+    }
 
     return(
         <div>
@@ -30,13 +38,22 @@ const TaskManagement = () => {
             <ul>
                 {tasks.map( task => (
                     <li key={task.id}>
+                        
                         {editingTask && editingTask.id === task.id ? (
-                            <TaskEditForm task={task} onUpdate={updateTask}/>
+                            <TaskEditForm task={editingTask} onUpdate={updateTask}/>
                         ) : (
                             <div>
-                               {task.task}
+                                <span style={{ textDecoration : task.completed ? 'line-through' : 'none'}}  >
+                                    {task.task}  
+                                </span>
+                             
                                <button onClick={() => startEditing(task)}>Edit</button>
                                <button onClick={() => deleteTask(task.id)}>Delete</button>
+                               <input 
+                                    type="checkbox"
+                                    checked={task.completed}
+                                    onChange={() => toggleTaskCompletion(task.id)}
+                                />
                                 
                             </div>
                         )}   
