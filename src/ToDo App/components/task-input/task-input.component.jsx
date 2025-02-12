@@ -20,7 +20,7 @@ const TaskInput = ({ addTask }) => {
     const [category, setCategory] = useState(categories[0]);
 
 
-    useEffect(() => {
+    const setLocalTime = () => {
         const currentTime = new Date();
         const currentLocalStartDate = currentTime.toISOString().split('T')[0];
         const currentLocalStartTime = currentTime.toTimeString().split(' ')[0].slice(0, 5);
@@ -34,7 +34,11 @@ const TaskInput = ({ addTask }) => {
 
         setEndDate(endFormattedDate);
         setEndTime(endFormattedTime);
-    },[]);
+    };
+
+    useEffect(() => {
+        setLocalTime();
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -52,10 +56,7 @@ const TaskInput = ({ addTask }) => {
             category,
         });
         setTask('');
-        setStartDate('');
-        setEndDate('');
-        setStartTime('');
-        setEndTime('');
+        setLocalTime();
         setNotes('');
         setCategory(categories[0]);
     };

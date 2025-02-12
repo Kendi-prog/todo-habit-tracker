@@ -47,6 +47,7 @@ const TaskManagement = () => {
                                     {task.task} : (From : {task.startDate} To : {task.endDate} ) 
                                 </span>
                                 <p>Notes: {task.notes}</p>
+                                <p>Category: {task.category}</p>
                              
                                <button onClick={() => startEditing(task)}>Edit</button>
                                <button onClick={() => deleteTask(task.id)}>Delete</button>
