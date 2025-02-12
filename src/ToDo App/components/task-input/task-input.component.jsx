@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from "react";
 
+
+const categories = [
+    'Work',
+    'Personal',
+    'School',
+    'Health',
+    'Shopping',
+    'Other'
+]
+
 const TaskInput = ({ addTask }) => {
     const [task, setTask] = useState('');
     const [startDate, setStartDate] = useState('');
@@ -7,7 +17,7 @@ const TaskInput = ({ addTask }) => {
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
     const [notes, setNotes] = useState(''); 
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState(categories[0]);
 
 
     useEffect(() => {
@@ -39,6 +49,7 @@ const TaskInput = ({ addTask }) => {
             startTime,
             endTime,
             notes,
+            category,
         });
         setTask('');
         setStartDate('');
@@ -46,7 +57,7 @@ const TaskInput = ({ addTask }) => {
         setStartTime('');
         setEndTime('');
         setNotes('');
-        setCategory('');
+        setCategory(categories[0]);
     };
 
     return(
@@ -87,10 +98,17 @@ const TaskInput = ({ addTask }) => {
                     type="textarea"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
+                    placeholder="Add note"
                 />
-                <input 
-                    type="dropdown"
-                    value={category}/>
+                
+                <select
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                >
+                    {categories.map((category, index) => (
+                        <option key={index} value={category}>{category}</option>
+                    ))}
+                </select>
 
 
                 <button type="submit">Add Task</button>
