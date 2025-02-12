@@ -19,8 +19,8 @@ const TaskManagement = () => {
         setEditingTask(task);
     }
 
-    const updateTask = (id, updatedText) => {
-        setTasks(tasks.map(task => (task.id === id ? { ...task, task: updatedText } : task)));
+    const updateTask = (id, updatedTask) => {
+        setTasks(tasks.map(task => (task.id === id ? { ...task, task: updatedTask } : task)));
         setEditingTask(null);
     };
 
