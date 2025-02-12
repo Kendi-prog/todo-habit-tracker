@@ -46,6 +46,7 @@ const TaskManagement = () => {
                                 <span style={{ textDecoration : task.completed ? 'line-through' : 'none'}}  >
                                     {task.task} : (From : {task.startDate} To : {task.endDate} ) 
                                 </span>
+                                <p>Notes: {task.notes}</p>
                              
                                <button onClick={() => startEditing(task)}>Edit</button>
                                <button onClick={() => deleteTask(task.id)}>Delete</button>

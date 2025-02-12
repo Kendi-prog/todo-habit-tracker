@@ -1,13 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const TaskInput = ({ addTask }) => {
     const [task, setTask] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-    const [startTime, setStartTime] = useState('08:00');
-    const [endTime, setEndTime] = useState('10:00');
+    const [startTime, setStartTime] = useState('');
+    const [endTime, setEndTime] = useState('');
     const [notes, setNotes] = useState(''); 
-    const [category, setCategory] = useState('Personal');
+    const [category, setCategory] = useState('');
+
+
+    useEffect(() => {
+        const currentTime = new Date();
+        const currentLocalStartDate = currentTime.toISOString().split('T')[0];
+        const currentLocalStartTime = currentTime.toTimeString().split(' ')[0].slice(0, 5);
+
+        setStartDate(currentLocalStartDate);
+        setStartTime(currentLocalStartTime);
+
+        const endDate = new Date(currentTime.getTime() + 2 * 60 * 60 * 1000);
+        const endFormattedDate = endDate.toISOString().split('T')[0];
+        const endFormattedTime = endDate.toTimeString().split(' ')[0].slice(0, 5);
+
+        setEndDate(endFormattedDate);
+        setEndTime(endFormattedTime);
+    },[]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,10 +43,10 @@ const TaskInput = ({ addTask }) => {
         setTask('');
         setStartDate('');
         setEndDate('');
-        setStartTime('08:00');
-        setEndTime('10:00');
+        setStartTime('');
+        setEndTime('');
         setNotes('');
-        setCategory('Personal');
+        setCategory('');
     };
 
     return(
