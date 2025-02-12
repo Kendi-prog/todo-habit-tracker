@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import TaskInput from "../task-input/task-input.component";
-import TaskEditForm from "../task-edit-form/task-edit-form.component";
+import TaskItem from "../task-item/task-item.component";
 
 const TaskManagement = () => {
     const [tasks, setTasks] = useState([]);
@@ -13,10 +13,6 @@ const TaskManagement = () => {
 
     const deleteTask = (id) => {
         setTasks(tasks.filter(task => task.id !== id));
-    }
-
-    const startEditing = (task) => {
-        setEditingTask(task);
     }
 
     const updateTask = (id, updatedTask) => {
@@ -37,29 +33,15 @@ const TaskManagement = () => {
             <TaskInput addTask={addTask}/>
             <ul>
                 {tasks.map( task => (
-                    <li key={task.id}>
-                        
-                        {editingTask && editingTask.id === task.id ? (
-                            <TaskEditForm task={editingTask} onUpdate={updateTask}/>
-                        ) : (
-                            <div>
-                                <span style={{ textDecoration : task.completed ? 'line-through' : 'none'}}  >
-                                    {task.task} : (From : {task.startDate} To : {task.endDate} ) 
-                                </span>
-                                <p>Notes: {task.notes}</p>
-                                <p>Category: {task.category}</p>
-                             
-                               <button onClick={() => startEditing(task)}>Edit</button>
-                               <button onClick={() => deleteTask(task.id)}>Delete</button>
-                               <input 
-                                    type="checkbox"
-                                    checked={task.completed}
-                                    onChange={() => toggleTaskCompletion(task.id)}
-                                />
-                                
-                            </div>
-                        )}   
-                    </li>
+                   <TaskItem 
+                    key={task.id}
+                    task={task}
+                    onEdit={updateTask}
+                    onDelete={deleteTask}
+                    onToggleComplete={toggleTaskCompletion}
+                    isEditing={editingTask && editingTask.id === task.id}
+                    setEditingTask={setEditingTask}/> 
+                 
                 ))}
             </ul>
         </div>
