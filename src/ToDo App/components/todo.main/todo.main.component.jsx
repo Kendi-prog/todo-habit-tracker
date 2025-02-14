@@ -17,7 +17,7 @@ const ToDo = () => {
     }
 
     const updateTask = (id, updatedTask) => {
-      setTasks(tasks.map(task => (task.id === id ? { ...task, task: updatedTask } : task)));
+      setTasks(tasks.map(task => (task.id === id ? { ...task, ...updatedTask } : task)));
       setEditingTask(null);
     };
 

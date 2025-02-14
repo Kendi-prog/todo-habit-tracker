@@ -11,8 +11,8 @@ const TaskItem = ({ task, onEdit, onDelete, onToggleComplete, isEditing, setEdit
                 onChange={() => onToggleComplete(task.id)}
             />
             {isEditing ? (
-                <TaskEdit task={task} onUpdate={(id, updatedTask) => {
-                    onEdit(id, updatedTask);
+                <TaskEdit task={task} onUpdate={(updatedTask) => {
+                    onEdit(task.id, updatedTask);
                     setEditingTask(null);
                 }} />
             ) : (
