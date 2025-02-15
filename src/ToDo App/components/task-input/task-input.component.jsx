@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button, TaskNameInput, DateInput, TimeInput, Select, TaskInputContainer, Title, DateTimeRow, ToLabel, TextArea } from "./task-input.styles";
 
 
 const categories = [
@@ -62,60 +63,73 @@ const TaskInput = ({ addTask }) => {
     };
 
     return(
-        <div>
+        <TaskInputContainer>
+            <Title>Add New Task</Title>
             <form onSubmit={handleSubmit}>
-                <input 
+                <TaskNameInput 
                     type="text"
                     value={task}
                     onChange={e => setTask(e.target.value)}
                     placeholder="Add new task"
                     required
                 />
-                <input
-                    type="date"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                    required 
-                />
-                 <input
-                    type="date"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                    required 
-                />
-                 <input
-                    type="time"
-                    value={startTime}
-                    onChange={(e) => setStartTime(e.target.value)}
-                    required 
-                />
-                 <input
-                    type="time"
-                    value={endTime}
-                    onChange={(e) => setEndTime(e.target.value)}
-                    required 
-                />
-                <input 
+                <DateTimeRow>
+                    <DateInput
+                        className="small"
+                        type="date"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        required 
+                    />
+                     <TimeInput
+                        className="small"
+                        type="time"
+                        value={startTime}
+                        onChange={(e) => setStartTime(e.target.value)}
+                        required 
+                    />
+                </DateTimeRow >   
+                <DateTimeRow>
+                    <ToLabel>To</ToLabel>
+                </DateTimeRow>
+                <DateTimeRow>
+                    <DateInput
+                        className="small"
+                        type="date"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                        required 
+                    />
+                
+                    <TimeInput
+                        className="small"
+                        type="time"
+                        value={endTime}
+                        onChange={(e) => setEndTime(e.target.value)}
+                        required 
+                    />
+                </DateTimeRow>
+                <TextArea 
                     type="textarea"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
                     placeholder="Add note"
                 />
                 
-                <select
+                <Select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                 >
                     {categories.map((category, index) => (
                         <option key={index} value={category}>{category}</option>
                     ))}
-                </select>
+                </Select>
 
 
-                <button type="submit">Add Task</button>
+                <Button type="submit">Add Task</Button>
             </form>
 
-        </div>
+        </TaskInputContainer>
     );
 }
 

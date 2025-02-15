@@ -12,7 +12,7 @@ const TaskItem = ({ task, onEdit, onDelete, onToggleComplete, isEditing, setEdit
             />
             {isEditing ? (
                 <TaskEdit task={task} onUpdate={(updatedTask) => {
-                    onEdit(task.id, updatedTask);
+                    onEdit(updatedTask.id, updatedTask);
                     setEditingTask(null);
                 }} />
             ) : (
