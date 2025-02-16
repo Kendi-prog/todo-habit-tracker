@@ -1,19 +1,20 @@
 import React from "react";
 
 import TaskEdit from "../task-edit-form/task-edit-form.component";
-import { TaskItemContainer } from "./task-item.styles";
+import { TaskContainer, TaskItemContainer, TaskName, TaskStartTime } from "./task-item.styles";
 
 const TaskItem = ({ task, onEdit, onDelete, onToggleComplete, isEditing, setEditingTask }) => {
     return(
-        <TaskItemContainer category={task.category}>
-            <div>
-                
-            </div>
-            <input 
-                type="checkbox"
-                value={task.completed}
-                onChange={() => onToggleComplete(task.id)}
-            />
+        <TaskItemContainer >
+            <TaskStartTime>
+                <p>{task.startTime}</p>
+            </TaskStartTime>
+            <TaskContainer category={task.category}>
+                <TaskName completed={task.completed}>
+                    {task.task}
+                </TaskName>
+                <p><strong>Notes:</strong>{task.notes}</p>
+            </TaskContainer>
             {isEditing ? (
                 <TaskEdit task={task} onUpdate={(updatedTask) => {
                     onEdit(updatedTask.id, updatedTask);
@@ -21,14 +22,6 @@ const TaskItem = ({ task, onEdit, onDelete, onToggleComplete, isEditing, setEdit
                 }} />
             ) : (
                 <div>
-                    <h3 style={{ textDecoration : task.completed ? 'line-through' : 'none' }}>
-                        {task.task}
-                    </h3>
-                    <p><strong>Start:</strong>{task.startDate} {task.startTime}</p>
-                    <p><strong>End:</strong>{task.endDate} {task.endTime}</p>
-                    <p><strong>Notes:</strong>{task.notes}</p>
-                    <p><strong>Category:</strong>{task.category}</p>
-
                     <button onClick={() => setEditingTask(task)}>Edit</button>
                     <button onClick={() => onDelete(task.id)}>Delete</button>
                 </div>    
