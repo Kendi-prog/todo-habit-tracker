@@ -1,10 +1,14 @@
 import React from "react";
 
 import TaskEdit from "../task-edit-form/task-edit-form.component";
+import { TaskItemContainer } from "./task-item.styles";
 
 const TaskItem = ({ task, onEdit, onDelete, onToggleComplete, isEditing, setEditingTask }) => {
     return(
-        <li>
+        <TaskItemContainer category={task.category}>
+            <div>
+                
+            </div>
             <input 
                 type="checkbox"
                 value={task.completed}
@@ -30,7 +34,7 @@ const TaskItem = ({ task, onEdit, onDelete, onToggleComplete, isEditing, setEdit
                 </div>    
             )}
             
-        </li>
+        </TaskItemContainer>
     );
 }
 

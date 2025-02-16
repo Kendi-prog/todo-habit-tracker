@@ -5,7 +5,7 @@ import { Button, TaskNameInput, DateInput, TimeInput, Select, TaskInputContainer
 const categories = [
     'Work',
     'Personal',
-    'School',
+    'Education',
     'Health',
     'Shopping',
     'Other'
