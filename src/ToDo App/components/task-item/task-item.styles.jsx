@@ -19,7 +19,9 @@ const categoryBorderColors = {
 };
 
 export const TaskItemContainer = styled.div`
-    
+    display: flex;
+    align-items: center;
+    margin:  10px 0;
 `;
 
 export const TaskContainer = styled.li`
@@ -30,11 +32,14 @@ export const TaskContainer = styled.li`
     margin: 10px 0;
     border-radius: 0 20px 20px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
    
 `
 
 export const TaskStartTime = styled.div`
    font-weight: bold;
+   margin-right: 10px;
+   min-width: 80px;
 `
 
 export const TaskName = styled.h3`
