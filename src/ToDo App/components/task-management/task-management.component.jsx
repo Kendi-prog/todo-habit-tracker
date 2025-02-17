@@ -1,13 +1,17 @@
 import React from "react";
 
 import TaskItem from "../task-item/task-item.component";
+import { DateContainer, ListContainer } from "./task-management.styles";
 
 const TaskManagement = ({ tasks, onDelete, onUpdate, onToggleComplete, editingTask, setEditingTask }) => {
    
 
     return(
         <div>
-            <ul>
+            <DateContainer>
+                <h3>Date</h3>
+            </DateContainer>
+            <ListContainer>
                 {tasks.length > 0 ? (
                     tasks.map( task => (
                     <TaskItem 
@@ -22,7 +26,7 @@ const TaskManagement = ({ tasks, onDelete, onUpdate, onToggleComplete, editingTa
                     ))) : (
                         <li>No Tasks Available</li>
                     )}
-            </ul>
+            </ListContainer>
         </div>
     );
 }
