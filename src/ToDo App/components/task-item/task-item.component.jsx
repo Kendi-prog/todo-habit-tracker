@@ -1,12 +1,19 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faTrash } from "@fortawesome/free-solid-svg-icons";
+import {faCheckCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-import TaskEdit from "../task-edit-form/task-edit-form.component";
-import { DeleteIcon, TaskContainer, TaskItemContainer, TaskName, TaskStartTime } from "./task-item.styles";
+import { 
+    CompleteTaskIcon, 
+    DeleteIcon, 
+    HiddenSpace, 
+    Icon, 
+    TaskContainer, 
+    TaskItemContainer, 
+    TaskName, 
+    TaskStartTime 
+} from "./task-item.styles";
 
 
-const TaskItem = ({ task, onEdit, onDelete, onToggleComplete, isEditing, setEditingTask }) => 
+const TaskItem = ({ task, onDelete, onToggleComplete }) => 
 {
     return(
         <TaskItemContainer >
@@ -19,16 +26,18 @@ const TaskItem = ({ task, onEdit, onDelete, onToggleComplete, isEditing, setEdit
                 </TaskName>
                 <p><strong>Notes:</strong>{task.notes}</p>
             </TaskContainer>
-            {isEditing ? (
-                <TaskEdit task={task} onUpdate={(updatedTask) => {
-                    onEdit(updatedTask.id, updatedTask);
-                    setEditingTask(null);
-                }} />
+            <CompleteTaskIcon onClick={() => onToggleComplete(task.id)}>
+                <Icon 
+                    icon={faCheckCircle}
+                    style={{  color: task.completed ? 'green' : 'grey'}}/>
+            </CompleteTaskIcon>
+            {task.completed ? (
+                <HiddenSpace />
             ) : (
                 <DeleteIcon onClick={() => onDelete(task.id)}> 
-                    <FontAwesomeIcon icon={faTrash}/>
-                </DeleteIcon>  
-            )}
+                    <Icon icon={faTrash}/>
+                </DeleteIcon> 
+            )} 
             
         </TaskItemContainer>
     );
