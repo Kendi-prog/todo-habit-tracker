@@ -22,14 +22,17 @@ export const TaskItemContainer = styled.div`
     display: flex;
     align-items: center;
     margin:  10px 0;
+    justify-content: space-between;
+    margin: 10px 0;
+    
 `;
 
 export const TaskContainer = styled.li`
     background-color: ${({ category }) => categoryColors[category] || '#fff'};
     border-left: 5px solid  ${({ category }) => categoryBorderColors[category] };
     color: white;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 6px;
+    margin: 0 ;
     border-radius: 0 20px 20px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     flex-grow: 1;
@@ -38,10 +41,18 @@ export const TaskContainer = styled.li`
 
 export const TaskStartTime = styled.div`
    font-weight: bold;
-   margin-right: 10px;
-   min-width: 80px;
+   margin-right: 20px
 `
 
 export const TaskName = styled.h3`
     text-decoration: ${({ completed }) => completed ? 'line-through' : 'none'};
+`
+
+export const DeleteIcon = styled.button`
+    background: none;
+    border: none;
+    color: red;
+    curser: pointer;
+    padding: 0;
+    margin-left: 20px;
 `

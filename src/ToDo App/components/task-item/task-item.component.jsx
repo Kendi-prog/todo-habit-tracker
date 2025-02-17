@@ -1,13 +1,17 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import TaskEdit from "../task-edit-form/task-edit-form.component";
-import { TaskContainer, TaskItemContainer, TaskName, TaskStartTime } from "./task-item.styles";
+import { DeleteIcon, TaskContainer, TaskItemContainer, TaskName, TaskStartTime } from "./task-item.styles";
 
-const TaskItem = ({ task, onEdit, onDelete, onToggleComplete, isEditing, setEditingTask }) => {
+
+const TaskItem = ({ task, onEdit, onDelete, onToggleComplete, isEditing, setEditingTask }) => 
+{
     return(
         <TaskItemContainer >
             <TaskStartTime>
-                <p>{task.startTime}</p>
+                {task.startTime}
             </TaskStartTime>
             <TaskContainer category={task.category}>
                 <TaskName completed={task.completed}>
@@ -21,10 +25,9 @@ const TaskItem = ({ task, onEdit, onDelete, onToggleComplete, isEditing, setEdit
                     setEditingTask(null);
                 }} />
             ) : (
-                <div>
-                    <button onClick={() => setEditingTask(task)}>Edit</button>
-                    <button onClick={() => onDelete(task.id)}>Delete</button>
-                </div>    
+                <DeleteIcon onClick={() => onDelete(task.id)}> 
+                    <FontAwesomeIcon icon={faTrash}/>
+                </DeleteIcon>  
             )}
             
         </TaskItemContainer>
