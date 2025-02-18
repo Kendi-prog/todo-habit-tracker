@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Arrow, CalendarContainer, DateCell, DatesScrollContainer, DaysContainer, Header } from "./calendar.styles";
 
 const Calendar = ({ onDateSelect }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
@@ -30,20 +31,20 @@ const Calendar = ({ onDateSelect }) => {
     const firstDay = getFirstDayOfMonth();
 
     return ( 
-        <div>
-            <div>
-                <button onClick={handlePreviousMonth}>&lt;</button>
+        <CalendarContainer>
+            <Header>
+                <Arrow onClick={handlePreviousMonth}>&lt;</Arrow>
                 <h3>{currentDate.toLocaleString('default', {month: "long"})}{year}</h3>
-                <button onClick={handleNextsMonth}>&gt;</button>
-            </div>
-            <div>
+                <Arrow onClick={handleNextsMonth}>&gt;</Arrow>
+            </Header>
+            <DaysContainer>
                 {['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'].map((day, index) => (
                     <h2 key={index}>{day}</h2>
                 ))}
-            </div>
-            <div>
+            </DaysContainer>
+            <DatesScrollContainer>
                 {Array.from({ length: firstDay }).map((_, index) => (
-                    <div key={index}/>
+                    <DateCell key={index}/>
                 ))}
 
                 {Array.from({ length: daysInMonth }).map((_, index) => {
@@ -52,14 +53,14 @@ const Calendar = ({ onDateSelect }) => {
                     && year === new Date().getFullYear()
 
                     return (
-                        <div key={index} isToday={isToday} onClick={() => handleDateClick(date)}>
+                        <DateCell key={index} isToday={isToday} onClick={() => handleDateClick(date)}>
                             {date}
-                        </div>
+                        </DateCell>
                     )
 
                 })}
-            </div>
-        </div>
+            </DatesScrollContainer>
+        </CalendarContainer>
     );
 }
 
