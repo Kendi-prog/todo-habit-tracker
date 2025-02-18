@@ -1,15 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 
 import TaskItem from "../task-item/task-item.component";
 import { DateContainer, ListContainer } from "./task-management.styles";
+import Calendar from "../calendar/calendar.component";
 
-const TaskManagement = ({ tasks, onDelete, onUpdate, onToggleComplete, editingTask, setEditingTask }) => {
-   
+const TaskManagement = ({ tasks, onDelete, onUpdate, onToggleComplete, editingTask, setEditingTask }
+    ) => {
+   const [selectedDate, setSelectedDate] = useState(new Date());
+
+   const handleSelectedDate = (date) => {
+    setSelectedDate(date);
+   }
 
     return(
         <div>
             <DateContainer>
-                <h3>Date</h3>
+                <h3>Date:{selectedDate.toDateString()}</h3>
+                <Calendar />
             </DateContainer>
             <ListContainer>
                 {tasks.length > 0 ? (
