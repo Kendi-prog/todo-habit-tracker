@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const Calendar = () => {
+const Calendar = ({ onDateSelect }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
 
     const getDaysInMonth = (month, year) => {
@@ -17,6 +17,11 @@ const Calendar = () => {
 
     const handleNextsMonth = () => {
         setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1));
+    }
+
+    const  handleDateClick = (date) => {
+        const selectedDate = new Date(year, month, date);
+        onDateSelect(selectedDate);
     }
 
     const month = currentDate.getMonth();
@@ -47,7 +52,9 @@ const Calendar = () => {
                     && year === new Date().getFullYear()
 
                     return (
-                        <div key={index} isToday={isToday}></div>
+                        <div key={index} isToday={isToday} onClick={() => handleDateClick(date)}>
+                            {date}
+                        </div>
                     )
 
                 })}

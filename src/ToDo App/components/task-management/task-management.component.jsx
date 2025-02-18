@@ -16,7 +16,7 @@ const TaskManagement = ({ tasks, onDelete, onUpdate, onToggleComplete, editingTa
         <div>
             <DateContainer>
                 <h3>Date:{selectedDate.toDateString()}</h3>
-                <Calendar />
+                <Calendar onDateSelect={handleSelectedDate}/>
             </DateContainer>
             <ListContainer>
                 {tasks.length > 0 ? (
