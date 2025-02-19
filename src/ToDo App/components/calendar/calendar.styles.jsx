@@ -7,7 +7,6 @@ export const CalendarContainer = styled.div`
     border: 1px solid #ccc;
     padding: 20px;
     width: 300px;
-    overflow: hidden;
 `;
 
 export const Header = styled.div`
@@ -24,22 +23,17 @@ export const Arrow = styled.button`
     font-size: 24px;
 `;
 
-export const DaysContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-`;
-
-export const Day = styled.div`
-    font-weight: bold;
-    width: 14.28%; /* 100% / 7 days */
-    text-align: center;
-`;
-
 export const DatesScrollContainer = styled.div`
     display: flex;
     overflow-x: auto; /* Enable horizontal scrolling */
     width: 100%;
+    white-space: nowrap;
+`;
+
+export const DayLabel = styled.div`
+    font-weight: bold;
+    text-align: center;
+    width: 40px; /* Fixed width for day labels */
 `;
 
 export const DateCell = styled.div`
@@ -47,6 +41,8 @@ export const DateCell = styled.div`
     border: 1px solid #eee;
     min-width: 40px; /* Set a minimum width for date cells */
     text-align: center;
-    opacity: ${({ isToday }) => (isToday ? 1 : 0.5)};
+    background-color: ${({ isToday }) => (isToday ? '#d1e7dd' : 'transparent')}; /* Highlight today */
 `;
+
+
 

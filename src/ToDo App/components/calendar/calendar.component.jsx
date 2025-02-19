@@ -1,63 +1,67 @@
 import React, {useState} from "react";
-import { Arrow, CalendarContainer, DateCell, DatesScrollContainer, DaysContainer, Header } from "./calendar.styles";
+import { Arrow, 
+    CalendarContainer, 
+    DateCell, 
+    DatesScrollContainer, 
+    DayLabel, 
+    Header 
+} from "./calendar.styles";
 
 const Calendar = ({ onDateSelect }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
 
-    const getDaysInMonth = (month, year) => {
-        return new Date(year, month + 1, 0).getDate();
-    }
-
-    const getFirstDayOfMonth = (month, year) => {
-        return new Date(year, month + 1, 0).getDay();
-    }
-
-    const handlePreviousMonth = () => {
-        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1));
-    }
-
-    const handleNextsMonth = () => {
-        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1));
-    }
-
     const  handleDateClick = (date) => {
-        const selectedDate = new Date(year, month, date);
-        onDateSelect(selectedDate);
+        onDateSelect(date);
     }
 
-    const month = currentDate.getMonth();
-    const year = currentDate.getFullYear();
-    const daysInMonth = getDaysInMonth();
-    const firstDay = getFirstDayOfMonth();
+    const generateDateRange = () => {
+        const dates = [];
+        const today = new Date();
+        const startDate = new Date(today);
+        startDate.setDate(today.getDate() - 10);
 
+        for(let i = 0; i < 21 ; i++){
+            const date  = new Date(startDate);
+            date.setDate(startDate.getDate() + i);
+            dates.push(date);
+        }
+
+        return dates;
+    }
+
+    const handlePrevious = () => {
+        const newDate = new Date(currentDate);
+        newDate.setDate(currentDate.getDate() - 1);
+        setCurrentDate(newDate);
+    };
+
+    const handleNext = () => {
+        const newDate = new Date(currentDate);
+        newDate.setDate(currentDate.getDate() + 1);
+        setCurrentDate(newDate);
+    };
+
+    const dateRange = generateDateRange();
+
+    
     return ( 
         <CalendarContainer>
             <Header>
-                <Arrow onClick={handlePreviousMonth}>&lt;</Arrow>
-                <h3>{currentDate.toLocaleString('default', {month: "long"})}{year}</h3>
-                <Arrow onClick={handleNextsMonth}>&gt;</Arrow>
+                <Arrow onClick={handlePrevious}>&lt;</Arrow>
+                <h3>{currentDate.toLocaleString('default', { month: 'long', year: 'numeric' })}</h3>
+                <Arrow onClick={handleNext}>&gt;</Arrow>
             </Header>
-            <DaysContainer>
-                {['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'].map((day, index) => (
-                    <h2 key={index}>{day}</h2>
-                ))}
-            </DaysContainer>
             <DatesScrollContainer>
-                {Array.from({ length: firstDay }).map((_, index) => (
-                    <DateCell key={index}/>
-                ))}
-
-                {Array.from({ length: daysInMonth }).map((_, index) => {
-                    const date = index + 1;
-                    const isToday = new Date().getDate() === date && month === new Date().getMonth()
-                    && year === new Date().getFullYear()
-
+                {dateRange.map((date, index) => {
+                    const isToday = date.toDateString() === new Date().toDateString();
                     return (
-                        <DateCell key={index} isToday={isToday} onClick={() => handleDateClick(date)}>
-                            {date}
-                        </DateCell>
-                    )
-
+                        <div key={index}>
+                            <DayLabel>{date.toLocaleString('default', { weekday: 'short' })}</DayLabel>
+                            <DateCell onClick={() => handleDateClick(date)} isToday={isToday}>
+                                {date.getDate()}
+                            </DateCell>
+                        </div>
+                    );
                 })}
             </DatesScrollContainer>
         </CalendarContainer>
