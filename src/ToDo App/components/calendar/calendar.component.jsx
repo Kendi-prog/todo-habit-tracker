@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Arrow, 
     CalendarContainer,  
     DatesContainer, 
@@ -16,6 +16,16 @@ const Calendar = ({ onDateSelect }) => {
         onDateSelect(date); 
     };
 
+    const getCurrentDateIndex = (dateRange) => {
+        const today = new Date();
+        return dateRange.findIndex(
+            (date) =>
+                date.getDate() === today.getDate() &&
+                date.getMonth() === today.getMonth() &&
+                date.getFullYear() === today.getFullYear()
+        );
+    };
+
     const generateDateRange = () => {
         const dates = [];
         const startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
@@ -30,20 +40,31 @@ const Calendar = ({ onDateSelect }) => {
 
     const handlePrevious = () => {
         if (startDateIndex > 0) {
-            setStartDateIndex(startDateIndex - 1); // Go back by 7 days
+            setStartDateIndex((prevIndex) => prevIndex - 7); 
         }
     };
-
+    
     const handleNext = () => {
         const totalDays = generateDateRange().length;
         if (startDateIndex + 7 < totalDays) {
-            setStartDateIndex(startDateIndex + 1); // Go forward by 7 days
+            setStartDateIndex((prevIndex) => prevIndex + 7); // Go forward by 7 days
         }
     };
+    
 
     const dateRange = generateDateRange();
 
     const visibleDates = dateRange.slice(startDateIndex, startDateIndex + 7);
+
+
+    useEffect(() => {
+        const currentDateIndex = getCurrentDateIndex(dateRange);
+        if (currentDateIndex !== -1) {
+            const adjustedIndex = Math.floor(currentDateIndex / 7) * 7; 
+            setStartDateIndex(adjustedIndex); 
+        }
+    }, [dateRange]); 
+    
 
     return (
         <CalendarContainer>
