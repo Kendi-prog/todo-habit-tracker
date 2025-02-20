@@ -10,6 +10,7 @@ import { Arrow,
 
 const Calendar = ({ onDateSelect }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
+    const [startDateIndex, setStartDateIndex] = useState(0); 
 
     const handleDateClick = (date) => {
         onDateSelect(date); 
@@ -28,28 +29,31 @@ const Calendar = ({ onDateSelect }) => {
     };
 
     const handlePrevious = () => {
-        const newDate = new Date(currentDate);
-        newDate.setMonth(currentDate.getMonth() - 1);
-        setCurrentDate(newDate);
+        if (startDateIndex > 0) {
+            setStartDateIndex(startDateIndex - 1); // Go back by 7 days
+        }
     };
 
     const handleNext = () => {
-        const newDate = new Date(currentDate);
-        newDate.setMonth(currentDate.getMonth() + 1);
-        setCurrentDate(newDate);
+        const totalDays = generateDateRange().length;
+        if (startDateIndex + 7 < totalDays) {
+            setStartDateIndex(startDateIndex + 1); // Go forward by 7 days
+        }
     };
 
     const dateRange = generateDateRange();
 
+    const visibleDates = dateRange.slice(startDateIndex, startDateIndex + 7);
+
     return (
         <CalendarContainer>
-            <Header> 
+            <Header>    
                 <h3>{currentDate.toLocaleString('default', { month: 'long', year: 'numeric' })}</h3>    
             </Header>
             <DatesContainer>
                 <Arrow onClick={handlePrevious}>&lt;</Arrow>
                 <DaysLabelContainer>
-                    {dateRange.map((date, index) => {
+                    {visibleDates.map((date, index) => {
                         const isToday = date.toDateString() === new Date().toDateString();
                         return (
                             <div key={index}>
