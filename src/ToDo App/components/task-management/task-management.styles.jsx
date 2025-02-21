@@ -12,7 +12,7 @@ export const DateContainer = styled.div`
 export const ListContainer = styled.ul`
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-height: 500px;
+    max-height: 400px;
     overflow-y: auto;
 
     &::-webkit-scrollbar {
