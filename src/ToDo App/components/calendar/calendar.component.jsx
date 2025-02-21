@@ -51,12 +51,12 @@ const Calendar = ({ onDateSelect }) => {
     }, [currentDate]);
 
     const handlePrevious = () => {
-        setStartDateIndex((prevIndex) => Math.max(prevIndex - 7, 0));
+        setStartDateIndex((prevIndex) => Math.max(prevIndex - 3, 0));
     };
 
     const handleNext = () => {
         if (startDateIndex + 7 < dateRange.length) {
-            setStartDateIndex((prevIndex) => Math.min(prevIndex + 7, dateRange.length - 1));
+            setStartDateIndex((prevIndex) => Math.min(prevIndex + 3, dateRange.length - 1));
         }
     };
 

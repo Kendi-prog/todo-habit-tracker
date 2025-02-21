@@ -41,7 +41,7 @@ export const DayLabel = styled.div`
 export const DateLabel = styled.div`
     cursor: pointer;
     text-align: center;
-    padding: 5px;
+    padding: 15px;
     border-radius: 50%;
     width: 30px;
     height: 30px;
