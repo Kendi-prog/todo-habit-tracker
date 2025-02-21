@@ -4,7 +4,7 @@ export const TaskInputContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin: 20px;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;

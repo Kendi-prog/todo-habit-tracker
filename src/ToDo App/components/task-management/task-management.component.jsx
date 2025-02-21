@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 import TaskItem from "../task-item/task-item.component";
-import { DateContainer, ListContainer } from "./task-management.styles";
+import { DateContainer, ListContainer, Title } from "./task-management.styles";
 import Calendar from "../calendar/calendar.component";
 
 const TaskManagement = ({ tasks, onDelete, onUpdate, onToggleComplete, editingTask, setEditingTask }
@@ -19,16 +19,17 @@ const TaskManagement = ({ tasks, onDelete, onUpdate, onToggleComplete, editingTa
                 <Calendar onDateSelect={handleSelectedDate}/>
             </DateContainer>
             <ListContainer>
+                {tasks.length > 0 && <Title>Task</Title>}
                 {tasks.length > 0 ? (
                     tasks.map( task => (
-                    <TaskItem 
+                        <TaskItem 
                         key={task.id}
                         task={task}
                         onEdit={onUpdate}
                         onDelete={onDelete}
                         onToggleComplete={onToggleComplete}
                         isEditing={editingTask && editingTask.id === task.id}
-                        setEditingTask={setEditingTask}/> 
+                        setEditingTask={setEditingTask}/>  
                     
                     ))) : (
                         <li>No Tasks Available</li>

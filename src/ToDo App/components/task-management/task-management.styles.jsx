@@ -19,3 +19,7 @@ export const ListContainer = styled.ul`
         display: none;
     }
 `;
+
+export const Title = styled.h3`
+    margin: 10px 60px;
+`

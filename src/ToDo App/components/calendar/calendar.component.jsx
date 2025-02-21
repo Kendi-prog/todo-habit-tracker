@@ -10,7 +10,7 @@ import { Arrow,
 
 
 const Calendar = ({ onDateSelect }) => {
-    const [currentDate, setCurrentDate] = useState(new Date());
+    const [currentDate] = useState(new Date());
     const [startDateIndex, setStartDateIndex] = useState(0);
     const [dateRange, setDateRange] = useState([]);
 
