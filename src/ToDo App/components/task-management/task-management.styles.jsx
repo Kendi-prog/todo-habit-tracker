@@ -22,4 +22,25 @@ export const ListContainer = styled.ul`
 
 export const Title = styled.h3`
     margin: 10px 60px;
-`
+`;
+
+
+export const NoTasksWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+
+    img {
+        width: 200px; /* Adjust size as needed */
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 18px;
+        color: #666;
+        font-weight: 600;
+    }
+`;

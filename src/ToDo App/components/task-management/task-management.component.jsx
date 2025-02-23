@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 
 import TaskItem from "../task-item/task-item.component";
-import { DateContainer, ListContainer, Title } from "./task-management.styles";
+import { DateContainer, ListContainer, Title, NoTasksWrapper } from "./task-management.styles";
 import Calendar from "../calendar/calendar.component";
+import task2 from "../../../assets/task2.jpeg";
 
 const TaskManagement = ({ tasks, onDelete, onUpdate, onToggleComplete, editingTask, setEditingTask }
     ) => {
@@ -32,7 +33,10 @@ const TaskManagement = ({ tasks, onDelete, onUpdate, onToggleComplete, editingTa
                         setEditingTask={setEditingTask}/>  
                     
                     ))) : (
-                        <li>No Tasks Available</li>
+                            <NoTasksWrapper>
+                                <img src={task2} alt="No tasks available" />
+                                <p>No Tasks Available</p>
+                            </NoTasksWrapper>
                     )}
             </ListContainer>
         </div>
