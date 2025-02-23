@@ -64,11 +64,11 @@ const Calendar = ({ onDateSelect }) => {
 
     return (
         <CalendarContainer>
-            <Header>
+            {/* <Header>
                 <h3>{currentDate.toLocaleString("default", { month: "long", year: "numeric" })}</h3>
-            </Header>
+            </Header> */}
             <DatesContainer>
-                <Arrow onClick={handlePrevious}>&lt;</Arrow>
+                <Arrow onClick={handlePrevious}>&#x23F4;</Arrow>
                 <DaysLabelContainer>
                     {visibleDates.map((date, index) => {
                         const isToday = date.toDateString() === new Date().toDateString();
@@ -82,7 +82,7 @@ const Calendar = ({ onDateSelect }) => {
                         );
                     })}
                 </DaysLabelContainer>
-                <Arrow onClick={handleNext}>&gt;</Arrow>
+                <Arrow onClick={handleNext}>&#x23F5;</Arrow>
             </DatesContainer>
         </CalendarContainer>
     );

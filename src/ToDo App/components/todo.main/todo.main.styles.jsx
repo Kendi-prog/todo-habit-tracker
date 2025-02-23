@@ -16,7 +16,7 @@ export const TaskInputArea = styled.div`
 export const TaskListArea = styled.div`
     flex: 2; 
     padding: 20px;
-    background-color: #ffffff; 
+    background-color:rgb(231, 221, 240); 
 `;
 
 export const AnalyticsArea = styled.div`

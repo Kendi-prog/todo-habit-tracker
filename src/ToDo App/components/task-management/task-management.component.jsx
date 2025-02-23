@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 import TaskItem from "../task-item/task-item.component";
-import { DateContainer, ListContainer, Title, NoTasksWrapper } from "./task-management.styles";
+import { DateContainer, ListContainer, Title, NoTasksWrapper, CalendarContainer } from "./task-management.styles";
 import Calendar from "../calendar/calendar.component";
 import task2 from "../../../assets/task2.jpeg";
 
@@ -16,9 +16,12 @@ const TaskManagement = ({ tasks, onDelete, onUpdate, onToggleComplete, editingTa
     return(
         <div>
             <DateContainer>
-                <h3>Date:{selectedDate.toDateString()}</h3>
-                <Calendar onDateSelect={handleSelectedDate}/>
+                <span>Today's Schedule</span>
+                <span>{selectedDate.toDateString()}</span> 
             </DateContainer>
+            <CalendarContainer>
+                <Calendar onDateSelect={handleSelectedDate}/>
+            </CalendarContainer>
             <ListContainer>
                 {tasks.length > 0 && <Title>Task</Title>}
                 {tasks.length > 0 ? (

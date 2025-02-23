@@ -21,8 +21,10 @@ export const DatesContainer = styled.div`
 
 export const Arrow = styled.div`
     cursor: pointer;
-    font-size: 20px;
+    font-size: 30px;
     padding: 10px;
+    color: #7600bc;
+    font-weight: bolder;
 `;
 
 export const DaysLabelContainer = styled.div`
@@ -36,16 +38,17 @@ export const DayLabel = styled.div`
     font-weight: bold;
     text-align: center;
     margin-bottom: 5px;
+    text-transform: uppercase;
 `;
 
 export const DateLabel = styled.div`
     cursor: pointer;
     text-align: center;
     padding: 15px;
-    border-radius: 50%;
+    border-radius: 30%;
     width: 30px;
     height: 30px;
-    background-color: ${(props) => (props.isToday ? '#ff9900' : 'transparent')};
+    background-color: ${(props) => (props.isToday ? '#7600bc' : 'transparent')};
     color: ${(props) => (props.isToday ? 'white' : 'black')};
 
     &:hover {
