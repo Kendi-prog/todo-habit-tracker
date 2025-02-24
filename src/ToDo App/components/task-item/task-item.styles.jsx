@@ -2,21 +2,13 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const categoryColors = {
-    Work: '#ADD8E6',        // Blue
-    Personal: '#ff6b81',    // Pink
-    Shopping: '#28a745',     // Green
-    Health: '#ffc107',      // Yellow
-    Education: '#17a2b8',   // Cyan
-    Other: '#6c757d',       // Gray
+    Official: '#ADD8E6',
+    Personal: '#ff6b81',    
 };
 
 const categoryBorderColors = {
-    Work:'#00008B' ,     // Blue
-    Personal:'rgb(139, 0, 116)',
-    Shopping: '#28a745',     // Green
-    Health: '#ffc107',      // Yellow
-    Education: '#17a2b8',   // Cyan
-    Other: '#6c757d',       // Gray
+    Official:'#00008B' ,                         
+    Personal:'rgb(139, 0, 116)',                    
 };
 
 export const TaskItemContainer = styled.div`

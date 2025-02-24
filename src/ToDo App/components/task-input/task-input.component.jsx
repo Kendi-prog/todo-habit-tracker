@@ -3,12 +3,8 @@ import { Button, TaskNameInput, DateInput, TimeInput, Select, TaskInputContainer
 
 
 const categories = [
-    'Work',
     'Personal',
-    'Education',
-    'Health',
-    'Shopping',
-    'Other'
+    'Official',  
 ]
 
 const TaskInput = ({ addTask }) => {

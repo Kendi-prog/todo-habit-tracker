@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import TaskManagement from "../task-management/task-management.component";
 import TaskInput from "../task-input/task-input.component";
 import { TodoMainContainer, TaskInputArea, TaskListArea, AnalyticsArea } from "./todo.main.styles";
+import TaskCategorySummary from "../../task-category-summary/task-category-summary.component";
 
 const ToDo = () => {
     const [tasks, setTasks] = useState([]);
@@ -32,6 +33,7 @@ const ToDo = () => {
     return(
       <TodoMainContainer>
         <TaskInputArea>
+          <TaskCategorySummary tasks={tasks}/>
           <TaskInput addTask={addTask}/>
         </TaskInputArea>
         <TaskListArea>
