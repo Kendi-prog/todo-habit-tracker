@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
 
 import TaskManagement from "../task-management/task-management.component";
 import TaskInput from "../task-input/task-input.component";
@@ -28,6 +28,16 @@ const ToDo = () => {
       }
     }
 
+    const deleteTask = async (taskId) => {
+      try {
+        await deleteDoc(doc(db, "tasks", taskId));
+        fetchTasks();
+      } catch (e) { 
+        console.error("Error deleting task: ", e);
+      }     
+    }
+
+
     const fetchTasks = async () => {
       try {
         const querySnapShot = await getDocs(collection(db, "tasks"));
@@ -41,25 +51,25 @@ const ToDo = () => {
       }
     }
 
+
     useEffect(() => {
       fetchTasks();
     }, []);
 
-    const deleteTask = (id) => {
-      setTasks(tasks.filter(task => task.id !== id));
-    }
-
+  
     const updateTask = (id, updatedTask) => {
       setTasks(tasks.map(task => (task.id === id ? { ...task, ...updatedTask } : task)));
       setEditingTask(null);
     };
 
-    const toggleTaskCompletion = (id) => {
-      setTasks(tasks.map(task => (
-          task.id === id ? (
-              {...task, completed: !task.completed}
-          ) : task
-      )));
+    const toggleTaskCompletion = async  (taskId, currentStatus) => {
+      try {
+        const taskRef = doc(db, "tasks", taskId);
+        await updateDoc(taskRef, { completed: !currentStatus});
+        fetchTasks();
+      } catch (e) {
+        console.error("Error updating task: ", e);
+      }
     }
 
     return(
