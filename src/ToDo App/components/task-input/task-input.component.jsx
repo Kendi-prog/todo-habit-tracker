@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Button, TaskNameInput, DateInput, TimeInput, Select, TaskInputContainer, Title, DateTimeRow, ToLabel, TextArea } from "./task-input.styles";
+import { FaCalendarAlt, FaHourglassHalf, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
+
+import { 
+    SaveButton, 
+    TaskNameInput, 
+    DateInput, 
+    TimeInput,  
+    TaskInputContainer, 
+    Title, 
+    DateTimeRow, 
+    ToLabel, 
+    TextArea,
+    CategoryContainer,
+    ButtonRow,
+    CancelButton,
+    Icon
+} from "./task-input.styles";
 
 
-const categories = [
-    'Personal',
-    'Official',  
-]
+const categories = ['Personal','Official'];
+    
 
 const TaskInput = ({ addTask }) => {
     const [task, setTask] = useState('');
@@ -52,11 +66,16 @@ const TaskInput = ({ addTask }) => {
             notes,
             category,
         });
+        handleReset();
+    };
+
+    const handleReset = () => {
         setTask('');
         setLocalTime();
         setNotes('');
         setCategory(categories[0]);
-    };
+    }
+
 
     return(
         <TaskInputContainer>
@@ -66,10 +85,11 @@ const TaskInput = ({ addTask }) => {
                     type="text"
                     value={task}
                     onChange={e => setTask(e.target.value)}
-                    placeholder="Add new task"
+                    placeholder="Title"
                     required
                 />
                 <DateTimeRow>
+                    <Icon><FaRegCalendarAlt /></Icon>
                     <DateInput
                         className="small"
                         type="date"
@@ -77,6 +97,7 @@ const TaskInput = ({ addTask }) => {
                         onChange={(e) => setStartDate(e.target.value)}
                         required 
                     />
+                    <Icon><FaHourglassHalf /></Icon>
                      <TimeInput
                         className="small"
                         type="time"
@@ -84,11 +105,10 @@ const TaskInput = ({ addTask }) => {
                         onChange={(e) => setStartTime(e.target.value)}
                         required 
                     />
-                </DateTimeRow >   
-                <DateTimeRow>
-                    <ToLabel>To</ToLabel>
                 </DateTimeRow>
+                <ToLabel>To</ToLabel>
                 <DateTimeRow>
+                    <Icon><FaRegCalendarAlt /></Icon>
                     <DateInput
                         className="small"
                         type="date"
@@ -96,7 +116,7 @@ const TaskInput = ({ addTask }) => {
                         onChange={(e) => setEndDate(e.target.value)}
                         required 
                     />
-                
+                    <Icon><FaHourglassHalf /></Icon>
                     <TimeInput
                         className="small"
                         type="time"
@@ -105,24 +125,31 @@ const TaskInput = ({ addTask }) => {
                         required 
                     />
                 </DateTimeRow>
+                <CategoryContainer>
+                    {categories.map((cat, index) => (
+                        <label key={index}>
+                            <input 
+                            type="radio" 
+                            name="category"
+                            value={cat}
+                            checked={category === cat} 
+                            onChange={(e) => setCategory(e.target.value)} />
+                            {cat}
+                        </label>
+                    ))}
+                </CategoryContainer>
                 <TextArea 
                     type="textarea"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
                     placeholder="Add note"
                 />
-                
-                <Select
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                >
-                    {categories.map((category, index) => (
-                        <option key={index} value={category}>{category}</option>
-                    ))}
-                </Select>
+                 <ButtonRow>
+                    <SaveButton type="submit">Save</SaveButton>
+                    <CancelButton type="button" onClick={handleReset}>Cancel</CancelButton>
+                </ButtonRow>
+               
 
-
-                <Button type="submit">Add Task</Button>
             </form>
 
         </TaskInputContainer>
