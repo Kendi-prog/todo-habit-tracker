@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const TodoMainContainer = styled.div`
     display: flex;
     height: 100vh; 
+    overflow: hidden;
 `;
 
 export const TaskInputArea = styled.div`
@@ -17,6 +18,12 @@ export const TaskListArea = styled.div`
     flex: 2; 
     padding: 20px;
     background-color:rgb(231, 221, 240); 
+    overflow-y: auto;
+    height: 100vh;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `;
 
 export const AnalyticsArea = styled.div`

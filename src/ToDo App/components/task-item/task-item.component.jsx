@@ -1,5 +1,7 @@
 import React from "react";
 import {faCheckCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { MdOutlineCancel } from "react-icons/md";
+import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 import { 
     CompleteTaskIcon, 
@@ -21,21 +23,19 @@ const TaskItem = ({ task, onDelete, onToggleComplete }) =>
                 {task.startTime}
             </TaskStartTime>
             <TaskContainer category={task.category}>
-                <TaskName completed={task.completed}>
+                <TaskName>
                     {task.task}
                 </TaskName>
                 <p><strong>Notes:</strong>{task.notes}</p>
             </TaskContainer>
-            <CompleteTaskIcon onClick={() => onToggleComplete(task.id)}>
-                <Icon 
-                    icon={faCheckCircle}
-                    style={{  color: task.completed ? 'green' : 'grey'}}/>
+            <CompleteTaskIcon completed={task.completed} onClick={() => onToggleComplete(task.id)}>
+                <IoCheckmarkDoneCircleOutline />
             </CompleteTaskIcon>
             {task.completed ? (
                 <HiddenSpace />
             ) : (
-                <DeleteIcon onClick={() => onDelete(task.id)}> 
-                    <Icon icon={faTrash}/>
+                <DeleteIcon completed={task.completed} onClick={() => onDelete(task.id)}> 
+                    <MdOutlineCancel />
                 </DeleteIcon> 
             )} 
             

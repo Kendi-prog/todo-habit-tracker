@@ -39,25 +39,32 @@ export const TaskStartTime = styled.div`
 `
 
 export const TaskName = styled.h3`
-    text-decoration: ${({ completed }) => completed ? 'line-through' : 'none'};
+    
 `
 
 export const CompleteTaskIcon = styled.div`
     background: transparent;
     margin: 10px;
     cursor: pointer;
-`
+    font-size: 20px;;
+    color: ${({ completed }) => (completed ? "green" : "gray")}; 
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+
+    &:hover {
+        color: ${({ completed }) => (completed ? "darkgreen" : "darkgray")}; 
+    }
+`;
 
 export const DeleteIcon = styled.button`
     background: transparent;
     border: none;
-    color: red;
+    color: #dc3545;
     curser: pointer;
     padding: 0;
     margin-left: 20px;
-    width: 10px;
-    height: 10px;
-
+    font-size: 20px;
+    // width: 20px;
+    // height: 20px;
 `
 
 export const Icon = styled(FontAwesomeIcon)`
