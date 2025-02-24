@@ -14,6 +14,8 @@ const ToDo = () => {
 
     const addTask = async (newTask) => {
       try {
+
+        console.log("Before Saving Task:", newTask.startDate);
         const docRef = await addDoc(collection(db, "tasks"), {
           ...newTask,
           completed: false,
@@ -21,6 +23,7 @@ const ToDo = () => {
         });
 
         console.log("Task added with ID: ", docRef.id);
+        console.log("Task Successfully Added with Date:", newTask.startDate);
         fetchTasks();
        
       } catch (e) {

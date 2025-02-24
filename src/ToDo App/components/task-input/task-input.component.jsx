@@ -60,9 +60,16 @@ const TaskInput = ({ addTask }) => {
             alert("Please fill in all fields");
             return;
         }
+        
+        const formattedStartDate = new Date(startDate).toLocaleDateString("en-CA");
+
+        console.log("Task:", task);
+        console.log("Original Start Date:", startDate);
+        console.log("Formatted Start Date (Stored):", formattedStartDate);
+
         addTask({
             task,
-            startDate,
+            startDate: formattedStartDate,
             endDate,
             startTime,
             endTime,
@@ -77,8 +84,7 @@ const TaskInput = ({ addTask }) => {
         setLocalTime();
         setNotes('');
         setCategory(categories[0]);
-    }
-
+    };
 
     return(
         <TaskInputContainer>

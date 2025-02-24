@@ -10,12 +10,17 @@ import { Arrow,
 
 
 const Calendar = ({ onDateSelect }) => {
-    const [currentDate] = useState(new Date());
+    const [currentDate, setCurrentDate] = useState(new Date());
     const [startDateIndex, setStartDateIndex] = useState(0);
     const [dateRange, setDateRange] = useState([]);
 
     const handleDateClick = (date) => {
-        onDateSelect(date);
+        const correctedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    
+        console.log("Clicked Date:", date.toISOString().split("T")[0]);
+        console.log("Corrected Date:", correctedDate.toISOString().split("T")[0]);
+
+        onDateSelect(correctedDate);
     };
 
     const getCurrentDateIndex = (dates) => {
