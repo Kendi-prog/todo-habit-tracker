@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaCalendarAlt, FaHourglassHalf, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
+import { FaHourglassHalf, FaRegCalendarAlt } from "react-icons/fa";
 
 import { 
     SaveButton, 
@@ -7,14 +7,17 @@ import {
     DateInput, 
     TimeInput,  
     TaskInputContainer, 
-    Title, 
-    DateTimeRow, 
+    Title,
     ToLabel, 
+    DateTimeRow,  
     TextArea,
     CategoryContainer,
     ButtonRow,
     CancelButton,
-    Icon
+    Icon,
+    RadioLabel,
+    HiddenRadio, 
+    CustomRadio,
 } from "./task-input.styles";
 
 
@@ -127,15 +130,17 @@ const TaskInput = ({ addTask }) => {
                 </DateTimeRow>
                 <CategoryContainer>
                     {categories.map((cat, index) => (
-                        <label key={index}>
-                            <input 
+                        <RadioLabel key={index}>
+                            <HiddenRadio 
                             type="radio" 
                             name="category"
                             value={cat}
                             checked={category === cat} 
-                            onChange={(e) => setCategory(e.target.value)} />
+                            onChange={(e) => setCategory(e.target.value)} 
+                            />
+                            <CustomRadio />
                             {cat}
-                        </label>
+                        </RadioLabel>
                     ))}
                 </CategoryContainer>
                 <TextArea 
