@@ -16,7 +16,6 @@ export const PersonalCategoryBox = styled.div`
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 `;
 
-
 export const OfficialCategoryBox = styled.div`
     background: #ADD8E6;
     padding: 20px;

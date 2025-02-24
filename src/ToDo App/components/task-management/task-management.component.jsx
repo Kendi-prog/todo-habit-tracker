@@ -1,7 +1,13 @@
 import React, {useState} from "react";
 
 import TaskItem from "../task-item/task-item.component";
-import { DateContainer, ListContainer, Title, NoTasksWrapper, CalendarContainer } from "./task-management.styles";
+import { 
+    DateContainer, 
+    ListContainer, 
+    Title, 
+    NoTasksWrapper, 
+    CalendarContainer 
+} from "./task-management.styles";
 import Calendar from "../calendar/calendar.component";
 import task2 from "../../../assets/task2.jpeg";
 

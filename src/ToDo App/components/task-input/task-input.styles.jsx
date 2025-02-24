@@ -120,9 +120,7 @@ export const CustomRadio = styled.span`
     ${HiddenRadio}:checked + &::after {
         background-color: #7600bc;
     }
-    `;
-
-
+`;
 
 export const TextArea = styled.textarea`
     width: 100%;

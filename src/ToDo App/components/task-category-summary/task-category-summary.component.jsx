@@ -6,8 +6,7 @@ import {
     CategoryLabel,
     PersonalCategoryBox,
     OfficialCategoryBox
-
-  } from "./task-category-summary.styles";
+} from "./task-category-summary.styles";
 
 const TaskCategorySummary = ({ tasks }) => {
     const personalCount = tasks.filter(task => task.category === 'Personal').length;

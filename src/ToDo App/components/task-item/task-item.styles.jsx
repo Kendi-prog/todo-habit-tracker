@@ -31,16 +31,16 @@ export const TaskContainer = styled.li`
     flex-grow: 1;
     min-width: 200px;
    
-`
+`;
 
 export const TaskStartTime = styled.div`
    font-weight: bold;
    margin-right: 20px
-`
+`;
 
 export const TaskName = styled.h3`
     
-`
+`;
 
 export const CompleteTaskIcon = styled.div`
     background: transparent;
@@ -65,12 +65,13 @@ export const DeleteIcon = styled.button`
     font-size: 20px;
     // width: 20px;
     // height: 20px;
-`
+`;
 
 export const Icon = styled(FontAwesomeIcon)`
     font-size: 16px;
-`
+`;
+
 export const HiddenSpace = styled.div`
     width: 30px;
     height: 30px;
-`
+`;

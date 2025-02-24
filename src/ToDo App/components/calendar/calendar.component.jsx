@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
+
 import { Arrow, 
     CalendarContainer,  
     DatesContainer, 
     DayLabel, 
     DateLabel,
-    Header,
     DaysLabelContainer, 
 } from "./calendar.styles";
 
@@ -64,9 +64,6 @@ const Calendar = ({ onDateSelect }) => {
 
     return (
         <CalendarContainer>
-            {/* <Header>
-                <h3>{currentDate.toLocaleString("default", { month: "long", year: "numeric" })}</h3>
-            </Header> */}
             <DatesContainer>
                 <Arrow onClick={handlePrevious}>&#x23F4;</Arrow>
                 <DaysLabelContainer>

@@ -1,13 +1,11 @@
 import React from "react";
-import {faCheckCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { MdOutlineCancel } from "react-icons/md";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 import { 
     CompleteTaskIcon, 
     DeleteIcon, 
-    HiddenSpace, 
-    Icon, 
+    HiddenSpace,  
     TaskContainer, 
     TaskItemContainer, 
     TaskName, 
