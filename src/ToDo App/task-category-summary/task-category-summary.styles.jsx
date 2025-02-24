@@ -7,8 +7,18 @@ export const SummaryContainer = styled.div`
     margin-top: 10px;
 `;
 
-export const CategoryBox = styled.div`
-    background: #f4f4f4;
+export const PersonalCategoryBox = styled.div`
+    background: #ff6b81;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+`;
+
+
+export const OfficialCategoryBox = styled.div`
+    background: #ADD8E6;
     padding: 20px;
     border-radius: 10px;
     text-align: center;

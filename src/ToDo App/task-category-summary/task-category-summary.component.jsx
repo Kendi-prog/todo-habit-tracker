@@ -2,9 +2,10 @@ import React from "react";
 
 import { 
     SummaryContainer,
-    CategoryBox,
     Count,
-    CategoryLabel
+    CategoryLabel,
+    PersonalCategoryBox,
+    OfficialCategoryBox
 
   } from "./task-category-summary.styles";
 
@@ -14,14 +15,14 @@ const TaskCategorySummary = ({ tasks }) => {
 
     return (
         <SummaryContainer>
-            <CategoryBox>
+            <PersonalCategoryBox>
                 <Count>{personalCount}</Count>
                 <CategoryLabel>Personal</CategoryLabel>
-            </CategoryBox>
-            <CategoryBox>
+            </PersonalCategoryBox>
+            <OfficialCategoryBox>
                 <Count>{officialCount}</Count>
                 <CategoryLabel>Official</CategoryLabel>
-            </CategoryBox>
+            </OfficialCategoryBox>
         </SummaryContainer>
     );
 }
