@@ -6,6 +6,7 @@ import TaskInput from "../task-input/task-input.component";
 import { TodoMainContainer, TaskInputArea, TaskListArea, AnalyticsArea } from "./todo.main.styles";
 import TaskCategorySummary from "../task-category-summary/task-category-summary.component";
 import db from "../../../utils/firebase";
+import Analytics from "../analytics/analytics.component";
 
 const ToDo = () => {
     const [tasks, setTasks] = useState([]);
@@ -92,7 +93,7 @@ const ToDo = () => {
           />
         </TaskListArea>
         <AnalyticsArea>
-          <span>Analytics</span>
+          <Analytics tasks={tasks}/>
         </AnalyticsArea>
       </TodoMainContainer>
         
