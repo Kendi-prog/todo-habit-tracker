@@ -1,7 +1,9 @@
 import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { Bell } from 'lucide-react';
 
-import { AnalyticsContainer, AnalyticsText } from './analytics.styles';
+import { AnalyticsContainer, ProfileSection, Profile, UserAvatar, UserInfo, UserName, UserSettings, TaskCompletionText, ProgressContainer } from './analytics.styles';
+
 
 const Analytics = ({ tasks }) => {
     const completedTasks = tasks.filter(task => task.completed);
@@ -14,35 +16,47 @@ const Analytics = ({ tasks }) => {
 
     return(
         <AnalyticsContainer>
-            <AnalyticsText>Goal</AnalyticsText>
-            <CircularProgressbar 
-                value={completionPercentage}
-                text={`${completionPercentage}%`}
-                styles={buildStyles({
-                    textSize: "15px",
-                    textAlign: "center",
-                    textAnchor: "middle",
-                    pathColor: `#7600bc`,
-                    textColor: "#333",
-                    trailColor: "#E7DDF0",
-                    strokeLinecap: "round",
-                })} 
-            />
-
-            <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 100 100"
-                style={{ position: "absolute", top: 0, left: 0 }}
-            >
-                <circle
-                    cx={50 + 50 * Math.cos((2 * Math.PI * completionPercentage) / 100 - Math.PI / 2)}
-                    cy={50 + 50 * Math.sin((2 * Math.PI * completionPercentage) / 100 - Math.PI / 2)}
-                    r="4"
-                    fill="#7600bc"
+            <ProfileSection>
+                <Bell />
+                <Profile>
+                    <UserInfo>
+                        <UserName>Leila Kendi</UserName>
+                        <UserSettings>My Settings</UserSettings>
+                    </UserInfo>
+                    <UserAvatar />
+                </Profile> 
+            </ProfileSection>
+            <p>Goal</p>
+            <ProgressContainer>
+                <CircularProgressbar 
+                    value={completionPercentage}
+                    text={`${completionPercentage}%`}
+                    styles={buildStyles({
+                        textSize: "15px",
+                        textAlign: "center",
+                        textAnchor: "middle",
+                        pathColor: `#7600bc`,
+                        textColor: "#333",
+                        trailColor: "#E7DDF0",
+                        strokeLinecap: "round",
+                    })} 
                 />
-            </svg>
-            <AnalyticsText>Task Completion</AnalyticsText>
+
+                <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 100 100"
+                    style={{ position: "absolute", top: 0, left: 0 }}
+                >
+                    <circle
+                        cx={50 + 50 * Math.cos((2 * Math.PI * completionPercentage) / 100 - Math.PI / 2)}
+                        cy={50 + 50 * Math.sin((2 * Math.PI * completionPercentage) / 100 - Math.PI / 2)}
+                        r="4"
+                        fill="#7600bc"
+                    />
+                </svg>
+            </ProgressContainer>
+            < TaskCompletionText>Task Completion</TaskCompletionText>
         </AnalyticsContainer>
     )
 }
