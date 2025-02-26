@@ -47,8 +47,6 @@ export const UserAvatar = styled.div`
   height: 40px;
   border-radius: 50%;
   background-color: #ccc;
-  // margin-left: 10px;
- 
 `;
 
 export const ProgressContainer = styled.div`
@@ -75,7 +73,7 @@ export const PosterText = styled.span`
   margin-top: 10px;
   display: block;
   text-align: center;
-`
+`;
 
 export const PosterImage = styled.img`
   width: 280px;

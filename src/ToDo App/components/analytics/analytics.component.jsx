@@ -55,20 +55,6 @@ const Analytics = ({ tasks }) => {
                         strokeLinecap: "round",
                     })} 
                 />
-
-                <svg
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 100 100"
-                    style={{ position: "absolute", top: 0, left: 0 }}
-                >
-                    <circle
-                        cx={50 + 50 * Math.cos((2 * Math.PI * completionPercentage) / 100 - Math.PI / 2)}
-                        cy={50 + 50 * Math.sin((2 * Math.PI * completionPercentage) / 100 - Math.PI / 2)}
-                        r="4"
-                        fill="#7600bc"
-                    />
-                </svg>
             </ProgressContainer>
             < TaskCompletionText>Task Completion</TaskCompletionText>
             <PosterContainer>
