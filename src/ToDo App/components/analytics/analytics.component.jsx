@@ -1,6 +1,5 @@
 import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import { Bell } from 'lucide-react';
 
 import { 
     AnalyticsContainer, 
@@ -12,8 +11,12 @@ import {
     UserName, 
     UserSettings, 
     TaskCompletionText, 
-    ProgressContainer 
+    ProgressContainer,
+    PosterContainer,
+    PosterImage, 
+    PosterText
 } from './analytics.styles';
+import webinar from '../../../assets/webinar.jpeg';
 
 
 const Analytics = ({ tasks }) => {
@@ -68,6 +71,10 @@ const Analytics = ({ tasks }) => {
                 </svg>
             </ProgressContainer>
             < TaskCompletionText>Task Completion</TaskCompletionText>
+            <PosterContainer>
+                <PosterText>Welcome to our Productivity Webinar</PosterText>
+                <PosterImage src={webinar} alt="Productivity Poster" />
+            </PosterContainer>
         </AnalyticsContainer>
     )
 }

@@ -62,3 +62,24 @@ export const TaskCompletionText = styled.p`
   text-align: center;
   margin-top: 10px;
 `;
+
+export const PosterContainer = styled.div`
+  margin-top: 20px;
+  margin-left: 30px;
+`;
+
+export const PosterText = styled.span`
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+`
+
+export const PosterImage = styled.img`
+  width: 280px;
+  height: 280px;
+  border-radius: 10px;
+  margin-top: 10px;
+`;
