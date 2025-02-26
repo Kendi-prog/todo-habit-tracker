@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Bell } from 'lucide-react';
 
 export const AnalyticsContainer = styled.div`
   position: relative;
@@ -8,9 +9,16 @@ export const AnalyticsContainer = styled.div`
 
 export const ProfileSection = styled.div`
   display: flex;
-  //align-items: center;
   justify-content: flex-end;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
+export const NotificationBell = styled(Bell)`
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 10px; 
 `;
 
 export const Profile = styled.div`
@@ -39,6 +47,8 @@ export const UserAvatar = styled.div`
   height: 40px;
   border-radius: 50%;
   background-color: #ccc;
+  // margin-left: 10px;
+ 
 `;
 
 export const ProgressContainer = styled.div`

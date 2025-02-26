@@ -2,7 +2,18 @@ import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { Bell } from 'lucide-react';
 
-import { AnalyticsContainer, ProfileSection, Profile, UserAvatar, UserInfo, UserName, UserSettings, TaskCompletionText, ProgressContainer } from './analytics.styles';
+import { 
+    AnalyticsContainer, 
+    ProfileSection,
+    NotificationBell, 
+    Profile, 
+    UserAvatar, 
+    UserInfo, 
+    UserName, 
+    UserSettings, 
+    TaskCompletionText, 
+    ProgressContainer 
+} from './analytics.styles';
 
 
 const Analytics = ({ tasks }) => {
@@ -17,7 +28,7 @@ const Analytics = ({ tasks }) => {
     return(
         <AnalyticsContainer>
             <ProfileSection>
-                <Bell />
+                <NotificationBell />
                 <Profile>
                     <UserInfo>
                         <UserName>Leila Kendi</UserName>
