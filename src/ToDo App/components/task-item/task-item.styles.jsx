@@ -75,3 +75,26 @@ export const HiddenSpace = styled.div`
     width: 30px;
     height: 30px;
 `;
+
+export const NotificationContainer = styled.div`
+  position: fixed;
+  bottom: 20px;
+  left: 50px;
+  background-color: #7600bc;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 250px;
+  font-size: 14px;
+`;
+
+export const CloseButton = styled.button`
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+`;

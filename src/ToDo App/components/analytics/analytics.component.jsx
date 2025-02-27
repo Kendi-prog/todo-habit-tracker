@@ -16,7 +16,7 @@ import {
     PosterImage, 
     PosterText
 } from './analytics.styles';
-import webinar from '../../../assets/webinar.jpeg';
+import webinar from '../../assets/webinar.jpeg';
 
 
 const Analytics = ({ tasks }) => {
