@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const categoryColors = {
     Official: '#ADD8E6',
-    Personal: '#ff6b81',    
+    Personal: '#FF9BA0',    
 };
 
 const categoryBorderColors = {
-    Official:'#00008B' ,                         
-    Personal:'rgb(139, 0, 116)',                    
+    Official:'#5A92AF' ,                         
+    Personal:'#D16B72',                    
 };
 
 export const TaskItemContainer = styled.div`

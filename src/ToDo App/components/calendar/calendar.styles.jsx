@@ -48,11 +48,11 @@ export const DateLabel = styled.div`
     border-radius: 30%;
     width: 30px;
     height: 30px;
-    background-color: ${(props) => (props.isToday ? '#7600bc' : 'transparent')};
-    color: ${(props) => (props.isToday ? 'white' : 'black')};
-
+    background-color: ${(props) => (props.isSelected ? "#888" : props.isToday ? "#7600bc" : "transparent")};
+    color: ${(props) => (props.isSelected || props.isToday ? "white" : "black")};
+   
     &:hover {
-        background-color: ${(props) => (props.isToday ? '#ff7f00' : '#f0f0f0')};
+        background-color: ${(props) => (props.isToday ? '#000' : '#f0f0f0')};
     }
 `;
 

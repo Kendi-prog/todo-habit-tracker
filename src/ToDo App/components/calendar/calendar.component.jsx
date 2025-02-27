@@ -13,14 +13,11 @@ const Calendar = ({ onDateSelect }) => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [startDateIndex, setStartDateIndex] = useState(0);
     const [dateRange, setDateRange] = useState([]);
+    const [selectedDate, setSelectedDate] = useState(null);
 
-    const handleDateClick = (date) => {
-        const correctedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    
-        console.log("Clicked Date:", date.toISOString().split("T")[0]);
-        console.log("Corrected Date:", correctedDate.toISOString().split("T")[0]);
-
-        onDateSelect(correctedDate);
+    const handleDateClick = (date, index) => {
+        setSelectedDate({ date, position: index * 50 + 30 })
+        onDateSelect(date);
     };
 
     const getCurrentDateIndex = (dates) => {
@@ -74,10 +71,16 @@ const Calendar = ({ onDateSelect }) => {
                 <DaysLabelContainer>
                     {visibleDates.map((date, index) => {
                         const isToday = date.toDateString() === new Date().toDateString();
+                        const isSelected = selectedDate && 
+                            selectedDate.date.toDateString() === date.toDateString() && !isToday;
                         return (
                             <div key={index}>
                                 <DayLabel>{date.toLocaleString("default", { weekday: "short" })}</DayLabel>
-                                <DateLabel onClick={() => handleDateClick(date)} isToday={isToday}>
+                                <DateLabel 
+                                    onClick={() => handleDateClick(date)} 
+                                    isToday={isToday}
+                                    isSelected={isSelected}
+                                >
                                     {date.getDate()}
                                 </DateLabel>
                             </div>

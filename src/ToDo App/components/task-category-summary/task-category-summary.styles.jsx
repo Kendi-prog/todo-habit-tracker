@@ -8,7 +8,7 @@ export const SummaryContainer = styled.div`
 `;
 
 export const PersonalCategoryBox = styled.div`
-    background: #ff6b81;
+    background: #FF9BA0;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
