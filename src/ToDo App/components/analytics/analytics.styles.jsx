@@ -52,18 +52,18 @@ export const UserAvatar = styled.div`
 export const ProgressContainer = styled.div`
   width: 150px;
   height: 150px;
-  margin: auto;
-  position: relative;
+  margin-left: 80px;
 `;
 
 export const TaskCompletionText = styled.p`
-  text-align: center;
-  margin-top: 10px;
+  margin-left: 100px;
+
+  font-weight: bold;
 `;
 
 export const PosterContainer = styled.div`
   margin-top: 20px;
-  margin-left: 30px;
+  margin-left: 20px;
 `;
 
 export const PosterText = styled.span`

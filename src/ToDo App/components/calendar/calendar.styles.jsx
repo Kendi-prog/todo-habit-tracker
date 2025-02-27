@@ -48,7 +48,7 @@ export const DateLabel = styled.div`
     border-radius: 30%;
     width: 30px;
     height: 30px;
-    background-color: ${(props) => (props.isSelected ? "#888" : props.isToday ? "#7600bc" : "transparent")};
+    background-color: ${(props) => (props.isSelected ? "#ccc" : props.isToday ? "#7600bc" : "transparent")};
     color: ${(props) => (props.isSelected || props.isToday ? "white" : "black")};
    
     &:hover {

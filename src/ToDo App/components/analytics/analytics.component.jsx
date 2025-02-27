@@ -40,7 +40,7 @@ const Analytics = ({ tasks }) => {
                     <UserAvatar />
                 </Profile> 
             </ProfileSection>
-            <p>Goal</p>
+            <TaskCompletionText>Goal</TaskCompletionText>
             <ProgressContainer>
                 <CircularProgressbar 
                     value={completionPercentage}
@@ -58,7 +58,7 @@ const Analytics = ({ tasks }) => {
             </ProgressContainer>
             < TaskCompletionText>Task Completion</TaskCompletionText>
             <PosterContainer>
-                <PosterText>Welcome to our Productivity Webinar</PosterText>
+                {/* <PosterText>Welcome to our Productivity Webinar</PosterText> */}
                 <PosterImage src={webinar} alt="Productivity Poster" />
             </PosterContainer>
         </AnalyticsContainer>
