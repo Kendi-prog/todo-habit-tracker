@@ -41,6 +41,13 @@ const SignUpForm = () => {
 
     const googleSignUp = async (providerFunction) => {
         const user = await providerFunction();
+        
+        await setDoc(doc(db, "users", user.uid), {
+            email: user.email,
+            username: user.displayName,
+            createdAt: new Date()
+        });
+        
         if (user) {
             alert("Account created successfully");
             navigate("/todo");
