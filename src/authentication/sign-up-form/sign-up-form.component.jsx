@@ -37,7 +37,15 @@ const SignUpForm = () => {
             .required("Required")
     });
 
-    const { auth, db } = firebaseUtils;
+    const { auth, db, googleSignIn } = firebaseUtils;
+
+    const googleSignUp = async (providerFunction) => {
+        const user = await providerFunction();
+        if (user) {
+            alert("Account created successfully");
+            navigate("/todo");
+        }
+    };
 
     const handleSubmit = async (values, { setSubmitting, setErrorMessage }) => {
         try {
@@ -92,7 +100,10 @@ const SignUpForm = () => {
                     </Form>
                 )}
             </Formik>
-
+            <div>
+                <p>Or sign up using google</p>
+                <button onClick={() => googleSignUp(googleSignIn)}>Sign Up with Google</button>
+            </div>
         </div>
     );
 }

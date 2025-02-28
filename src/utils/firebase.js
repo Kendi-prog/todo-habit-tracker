@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAOb5T9J95Lhpn-1jwOkbGdjqOjQG_howQ",
@@ -17,7 +17,23 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-const firebaseUtils = { db, auth };
+const googleProvider = new GoogleAuthProvider();
+
+const googleSignIn = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    return result.user;
+  } catch (error) {
+    console.error("Google Sign-In Error", error);
+    return null;
+  }
+}
+
+const firebaseUtils = { 
+  db, 
+  auth,
+  googleSignIn, 
+};
 
 export default firebaseUtils;
 

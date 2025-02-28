@@ -20,7 +20,15 @@ const SignInForm = () => {
         password: Yup.string().min(6, "Password must be at least 6 characters").required("Required")
     });
 
-    const { auth } = firebaseUtils;
+    const { auth, googleSignIn } = firebaseUtils;
+
+    const handleGoogleSignIn = async (providerFunction) => {
+        const user = await providerFunction();
+        if(user) {
+            alert("Sign In Successful");
+            navigate("/todo");
+        }
+    }
 
     const handleSubmit = async (values, { setSubmitting, setErrorMessage }) => {
         try {
@@ -57,6 +65,12 @@ const SignInForm = () => {
                     </Form>
                 )}
             </Formik>
+            <div>
+                <p>Or sign in with:</p>
+                <button onClick={() => handleGoogleSignIn(googleSignIn)}>
+                    Sign in with Google
+                </button>
+            </div>
         </div>
     );
 }
