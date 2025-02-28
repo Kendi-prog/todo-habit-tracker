@@ -2,11 +2,14 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-import { auth } from "../../utils/firebase";
+import firebaseUtils from "../../utils/firebase";
 
 
 const SignInForm = () => {
+    const navigate = useNavigate();
+
     const initialValues = {
         email: "",
         password: ""
@@ -17,10 +20,13 @@ const SignInForm = () => {
         password: Yup.string().min(6, "Password must be at least 6 characters").required("Required")
     });
 
+    const { auth } = firebaseUtils;
+
     const handleSubmit = async (values, { setSubmitting, setErrorMessage }) => {
         try {
             await signInWithEmailAndPassword(auth, values.email, values.password);
             alert("Sign In Successful");
+            navigate("/todo");
         } catch (error) {
             setErrorMessage({ email: "Incorrect email or password"});
         }

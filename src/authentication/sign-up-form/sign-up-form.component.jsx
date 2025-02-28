@@ -1,12 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { createUserWithEmailAndPassword } from "firebase/auth"; 
 import { doc, setDoc } from "firebase/firestore";
 
-import { auth, db } from "../../utils/firebase";
+import firebaseUtils from "../../utils/firebase";
 
 const SignUpForm = () => {
+    const navigate = useNavigate();
+
     const initialValues = {
         username: "",
         email: "",
@@ -24,15 +27,17 @@ const SignUpForm = () => {
             .required("Required"),
         password: Yup.string()
             .min(6, "Password must be at least 6 characters")
-            .match(/[a-z]/, "Password must contain at least one lowercase letter")
-            .match(/[A-Z]/, "Password must contain at least one uppercase letter")
-            .match(/[0-9]/, "Password must contain at least one number")
-            .match(/[^a-zA-Z0-9]/, "Password must contain at least one special character")
+            .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+            .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+            .matches(/[0-9]/, "Password must contain at least one number")
+            .matches(/[^a-zA-Z0-9]/, "Password must contain at least one special character")
             .required("Required"),
         confirmPassword: Yup.string()
-            .oneOf([Yup.ref("password"), null], "Passwords must match")
+            .oneOf([Yup.ref("password"), null], "Passwords must match!")
             .required("Required")
     });
+
+    const { auth, db } = firebaseUtils;
 
     const handleSubmit = async (values, { setSubmitting, setErrorMessage }) => {
         try {
@@ -48,6 +53,7 @@ const SignUpForm = () => {
             });
 
             alert("Account created successfully");
+            navigate("/signin");
         } catch (error) {
             setErrorMessage({ email: "Email already in use"});
         }
