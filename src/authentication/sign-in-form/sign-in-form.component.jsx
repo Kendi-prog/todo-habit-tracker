@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -7,10 +7,13 @@ import { MdEmail, MdLock } from "react-icons/md";
 
 import firebaseUtils from "../../utils/firebase";
 import { 
-    SignInFormContainer, 
-    Button, 
-    InputContainer,
-    ErrorMessageStyled  
+    FloatingLabel,
+     FormContainer,
+     StyledField,
+     SubmitButton,
+     Title,
+     HorizontalLineContainer,
+
 } from "./sign-in-form.styles";
 
 
@@ -50,8 +53,8 @@ const SignInForm = () => {
     }
 
     return (
-        <SignInFormContainer>
-            <h2>Sign In</h2>
+        <FormContainer>
+            <Title>Sign In</Title>
             <Formik 
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -59,31 +62,33 @@ const SignInForm = () => {
             >
                 {({ isSubmitting}) => (
                     <Form>
-                        <InputContainer>
-                            <Field type="email" name="email" placeholder="Email" />
-                            <label>Email</label>
-                            <ErrorMessage name="email" component={ErrorMessageStyled}/>
-                            <MdEmail />
-                        </InputContainer>
-                        <InputContainer>
-                            <Field type="password" name="password" placeholder="Password" />
-                            <label>Password</label>
-                            <ErrorMessage name="password" component={ErrorMessageStyled}/>
-                            <MdLock />
-                        </InputContainer>
-                        <Button type="submit" disabled={isSubmitting}>
+                        <FloatingLabel>
+                            <StyledField type="email" name="email" placeholder="Email" />
+                            <ErrorMessage name="email"/>
+                            {/* <MdEmail /> */}
+                        </FloatingLabel>
+                        <FloatingLabel>
+                            <StyledField type="password" name="password" placeholder="Password" />
+                            <ErrorMessage name="password"/>
+                            {/* <MdLock /> */}
+                        </FloatingLabel>
+                        <SubmitButton type="submit" disabled={isSubmitting}>
                             {isSubmitting ? "Signing in ..." : "Sign In"}
-                        </Button>
+                        </SubmitButton>
                     </Form>
                 )}
             </Formik>
             <div>
-                <p>Or sign in with:</p>
-                <Button onClick={() => handleGoogleSignIn(googleSignIn)}>
+                <HorizontalLineContainer>
+                    <hr />
+                    <span>OR</span>
+                    <hr />   
+                </HorizontalLineContainer>
+                <SubmitButton onClick={() => handleGoogleSignIn(googleSignIn)}>
                     Sign in with Google
-                </Button>
+                </SubmitButton>
             </div>
-        </SignInFormContainer>
+        </FormContainer>
     );
 }
 
