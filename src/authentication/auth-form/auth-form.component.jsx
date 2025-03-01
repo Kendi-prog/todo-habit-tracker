@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import SignInForm from "../sign-in-form/sign-in-form.component";
 import SignUpForm from "../sign-up-form/sign-up-form.component";
 import auth1 from "../auth-assets/auth1.jpeg";
-import auth2 from "../auth-assets/auth2.jpeg";
 import auth3 from "../auth-assets/auth3.jpeg";
-import auth4 from "../auth-assets/auth4.jpeg";
-import auth5 from "../auth-assets/auth5.jpeg";
-import { Container, ImageContainer, FormContainer, Wrapper, Image } from "./auth-form.styles";
+import { 
+    Container, 
+    ImageContainer, 
+    FormContainer, 
+    Wrapper, 
+    Image 
+} from "./auth-form.styles";
 
 const AuthForm = () => {
     const [isSignUp, setIsSignUp] = useState(true);

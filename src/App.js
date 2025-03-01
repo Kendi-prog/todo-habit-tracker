@@ -5,7 +5,6 @@ import ToDo from "./ToDo App/components/todo.main/todo.main.component";
 import SignInForm from "./authentication/sign-in-form/sign-in-form.component";
 import SignUpForm from "./authentication/sign-up-form/sign-up-form.component";
 import AuthForm from "./authentication/auth-form/auth-form.component";
-import AuthForm2 from "./authentication/auth-form2/auth-form2.component";
 
 
 const App = () => {

@@ -47,6 +47,7 @@ export const FormContainer = styled.div`
 
 export const Image = styled.img`
   width: 90%;
-  height: 90%;
+  height: 95%;
   object-fit: cover;
+  border-radius: 15px;
 `;

@@ -3,7 +3,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { MdEmail, MdLock } from "react-icons/md";
+// import { MdEmail, MdLock } from "react-icons/md";
 
 import firebaseUtils from "../../utils/firebase";
 import { 
