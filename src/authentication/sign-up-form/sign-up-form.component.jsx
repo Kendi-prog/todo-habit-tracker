@@ -6,6 +6,14 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
 import firebaseUtils from "../../utils/firebase";
+import { 
+    FormContainer,
+    Title, 
+    TitleText,
+    StyledField, 
+    FloatingLabel, 
+    SubmitButton 
+} from "./sign-up-form.styles";
 
 const SignUpForm = () => {
     const navigate = useNavigate();
@@ -76,8 +84,10 @@ const SignUpForm = () => {
     };
 
     return (
-        <div>
-            <h2>Sign Up</h2>
+        <FormContainer>
+            <Title>Create a free account</Title>
+            <TitleText>Your to go to habit tracker app</TitleText>
+            <SubmitButton onClick={() => googleSignUp(googleSignIn)}>Sign Up with Google</SubmitButton>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -85,33 +95,34 @@ const SignUpForm = () => {
             >
                 {({ isSubmitting }) => (
                     <Form>
-                        <div>
-                            <Field type="text" name="username" placeholder="Username" />
-                            <ErrorMessage name="username" component="div" style={{ color: "red" }} />
-                        </div>
-                        <div>
-                            <Field type="email" name="email" placeholder="Email" />
-                            <ErrorMessage name="email" component="div" style={{ color: "red" }} />
-                        </div>
-                        <div>
-                            <Field type="password" name="password" placeholder="Password" />
-                            <ErrorMessage name="password" component="div" style={{ color: "red" }} />
-                        </div>
-                        <div>
-                            <Field type="password" name="confirmPassword" placeholder="Confirm Password" />
-                            <ErrorMessage name="confirmPassword" component="div" style={{ color: "red" }} />
-                        </div>
-                        <button type="submit" disabled={isSubmitting}>
+                        <FloatingLabel>
+                            <StyledField type="text" name="username" placeholder="Username" />
+                            {/* <label>Username</label> */}
+                            <ErrorMessage name="username" component="FloatingLabel" style={{ color: "red" }} />
+                        </FloatingLabel>
+                        <FloatingLabel>
+                            <StyledField type="email" name="email" placeholder="Email" />
+                            {/* <label>Email</label> */}
+                            <ErrorMessage name="email" component="FloatingLabel" style={{ color: "red" }} />
+                        </FloatingLabel>
+                        <FloatingLabel>
+                            <StyledField type="password" name="password" placeholder="Password" />
+                            {/* <label>Password</label> */}
+                            <ErrorMessage name="password" component="FloatingLabel" style={{ color: "red" }} />
+                        </FloatingLabel>
+                        <FloatingLabel>
+                            <StyledField type="password" name="confirmPassword" placeholder="Confirm Password" />
+                            {/* <label>Confirm Password</label> */}
+                            <ErrorMessage name="confirmPassword" component="FloatingLabel" style={{ color: "red" }} />
+                        </FloatingLabel>
+                        <SubmitButton type="submit" disabled={isSubmitting}>
                             {isSubmitting ? "Signing up ..." : "Sign Up"}
-                        </button>
+                        </SubmitButton>
                     </Form>
                 )}
             </Formik>
-            <div>
-                <p>Or sign up using google</p>
-                <button onClick={() => googleSignUp(googleSignIn)}>Sign Up with Google</button>
-            </div>
-        </div>
+       
+        </FormContainer>
     );
 }
 

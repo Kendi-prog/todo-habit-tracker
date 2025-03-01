@@ -25,7 +25,7 @@ export const ImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f0f0f0;
+  background: #F7F3FA;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Added transition */
   order: ${(props) => (props.isSignUp ? "0" : "1")};
   //opacity: ${(props) => (props.isSignUp ? "1" : "0")}; /* Fades out when not active */
@@ -46,7 +46,7 @@ export const FormContainer = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
 `;

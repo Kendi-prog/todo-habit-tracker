@@ -3,8 +3,15 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { MdEmail, MdLock } from "react-icons/md";
 
 import firebaseUtils from "../../utils/firebase";
+import { 
+    SignInFormContainer, 
+    Button, 
+    InputContainer,
+    ErrorMessageStyled  
+} from "./sign-in-form.styles";
 
 
 const SignInForm = () => {
@@ -30,11 +37,12 @@ const SignInForm = () => {
         }
     }
 
-    const handleSubmit = async (values, { setSubmitting, setErrorMessage }) => {
+    const handleSubmit = async (values, { setSubmitting, setErrorMessage, resetForm }) => {
         try {
             await signInWithEmailAndPassword(auth, values.email, values.password);
             alert("Sign In Successful");
             navigate("/todo");
+            resetForm();
         } catch (error) {
             setErrorMessage({ email: "Incorrect email or password"});
         }
@@ -42,7 +50,7 @@ const SignInForm = () => {
     }
 
     return (
-        <div>
+        <SignInFormContainer>
             <h2>Sign In</h2>
             <Formik 
                 initialValues={initialValues}
@@ -51,27 +59,31 @@ const SignInForm = () => {
             >
                 {({ isSubmitting}) => (
                     <Form>
-                        <div>
+                        <InputContainer>
                             <Field type="email" name="email" placeholder="Email" />
-                            <ErrorMessage name="email" component="div" style={{ color: 'red'}} />
-                        </div>
-                        <div>
+                            <label>Email</label>
+                            <ErrorMessage name="email" component={ErrorMessageStyled}/>
+                            <MdEmail />
+                        </InputContainer>
+                        <InputContainer>
                             <Field type="password" name="password" placeholder="Password" />
-                            <ErrorMessage name="password" component="div" style={{ color: 'red'}} />
-                        </div>
-                        <button type="submit" disabled={isSubmitting}>
+                            <label>Password</label>
+                            <ErrorMessage name="password" component={ErrorMessageStyled}/>
+                            <MdLock />
+                        </InputContainer>
+                        <Button type="submit" disabled={isSubmitting}>
                             {isSubmitting ? "Signing in ..." : "Sign In"}
-                        </button>
+                        </Button>
                     </Form>
                 )}
             </Formik>
             <div>
                 <p>Or sign in with:</p>
-                <button onClick={() => handleGoogleSignIn(googleSignIn)}>
+                <Button onClick={() => handleGoogleSignIn(googleSignIn)}>
                     Sign in with Google
-                </button>
+                </Button>
             </div>
-        </div>
+        </SignInFormContainer>
     );
 }
 
