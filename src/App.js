@@ -13,7 +13,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to = "/authform"/>} />
-        <Route path="/authform" element={<AuthForm2 />}/>
+        <Route path="/authform" element={<AuthForm />}/>
         <Route path="/signup" element={<SignUpForm />}/>
         <Route path="/signin" element={<SignInForm />}/>
         <Route path="/todo" element={<ToDo />}/>

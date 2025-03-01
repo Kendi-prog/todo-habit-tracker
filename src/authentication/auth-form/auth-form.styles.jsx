@@ -1,37 +1,52 @@
 import styled from "styled-components";
-import auth1 from "../auth-assets/auth1.jpeg";
-import auth2 from "../auth-assets/auth2.jpeg";
-import auth3 from "../auth-assets/auth3.jpeg";
-
 
 export const Container = styled.div`
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    transition: transform 0.6s ease-in-out;
-    transform: translateX(${props => (props.shifted ? '-50%' : '0')});
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #F7F3FA;
+  overflow: hidden;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  width: 800px;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+  background: #F7F3FA;
 `;
 
 export const ImageContainer = styled.div`
-    flex: 1;
-    background-image: url(${props => (props.shifted ? auth3 : auth1)});
-    background-size: cover;
-    background-position: center;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Added transition */
+  order: ${(props) => (props.isSignUp ? "0" : "1")};
+  //opacity: ${(props) => (props.isSignUp ? "1" : "0")}; /* Fades out when not active */
+  transform: ${(props) => (props.isSignUp ? "translateX(0)" : "translateX(-20px)")};
 `;
 
 export const FormContainer = styled.div`
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: white;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Added transition */
+  order: ${(props) => (props.isSignUp ? "1" : "0")};
+  //opacity: ${(props) => (props.isSignUp ? "1" : "0")}; /* Fades out when not active */
+  transform: ${(props) => (props.isSignUp ? "translateX(0)" : "translateX(-20px)")}; /* Slide effect */
 `;
 
-export const ToggleText = styled.p`
-    margin-top: 20px;
-    cursor: pointer;
-    color: blue;
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;

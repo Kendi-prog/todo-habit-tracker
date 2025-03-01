@@ -18,25 +18,38 @@ const AuthForm2 = () => {
     return (
       <Container>
         <Wrapper>
-            <ContentWrapper isSignUp={isSignUp}>
-                <ImageContainer shift={!isSignUp}>
-                        <Image 
-                            src={isSignUp ? auth1 : auth2 } 
-                            alt="sign in image"
-                            key={isSignUp ? "signup" : "signin"} 
-                        />
-
-                </ImageContainer>
-                <FormContainer shift={!isSignUp}>
-                    {isSignUp ? <SignUpForm /> : <SignInForm />}
-                    <p>
-                        {isSignUp ? "Already have an account?" : "Don't have an account?"} 
-                        <span style={{ cursor: "pointer", color: "blue" }} onClick={toggleAuth}>
-                            {isSignUp ? "Sign In" : "Sign Up"}
-                        </span>
-                    </p>
-                </FormContainer>
-            </ContentWrapper>
+                {isSignUp ? (
+                    <>
+                        <ImageContainer>
+                            <Image src={auth1} alt="Sign up image" key="signup"/>
+                        </ImageContainer>
+                        <FormContainer>
+                            <SignUpForm />
+                            <p>
+                                "Already have an account?"
+                                <span style={{ cursor: "pointer", color: "blue" }} onClick={toggleAuth}>
+                                    "Sign In"
+                                </span>
+                            </p>
+                        </FormContainer>   
+                    </>
+                ) : (
+                    <>
+                        <FormContainer>
+                            <SignInForm />
+                            <p>
+                                "Don't have an account?"
+                                <span style={{ cursor: "pointer", color: "blue" }} onClick={toggleAuth}>
+                                    "Sign Up"
+                                </span>
+                            </p>
+                        </FormContainer>
+                        <ImageContainer>
+                            <Image src={auth3} alt="Sign in image" key="signin"/>
+                        </ImageContainer>
+                    </>
+                )}  
+           
         </Wrapper>
       </Container>
     );

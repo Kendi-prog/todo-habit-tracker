@@ -2,31 +2,37 @@ import React, { useState } from "react";
 
 import SignInForm from "../sign-in-form/sign-in-form.component";
 import SignUpForm from "../sign-up-form/sign-up-form.component";
-// import auth1 from "../auth-assets/auth1.jpeg";
-// import auth2 from "../auth-assets/auth2.jpeg";
-import { Container, ImageContainer, FormContainer, ToggleText } from "./auth-form.styles";
+import auth1 from "../auth-assets/auth1.jpeg";
+import auth2 from "../auth-assets/auth2.jpeg";
+import auth3 from "../auth-assets/auth3.jpeg";
+import auth4 from "../auth-assets/auth4.jpeg";
+import auth5 from "../auth-assets/auth5.jpeg";
+import { Container, ImageContainer, FormContainer, Wrapper, Image } from "./auth-form.styles";
 
 const AuthForm = () => {
-    const [shifted, setShifted] = useState(false);
+    const [isSignUp, setIsSignUp] = useState(true);
 
-    const toggleForm = () => {
-        setShifted(!shifted);
-    }
+    const toggleAuth = () => setIsSignUp(!isSignUp);
 
     return (
-        <Container shifted={shifted}>
-            <ImageContainer shifted={shifted}/>
-            <FormContainer>
-                {shifted ? <SignInForm /> : <SignUpForm />}
-                <ToggleText onClick={toggleForm}>
-                    {shifted ? "Dont have an account? Sign up" : "Already have an account? Sign In"}
-                </ToggleText>
+      <Container>
+        <Wrapper>
+            <ImageContainer isSignUp={isSignUp}>
+                <Image src={isSignUp ? auth3 : auth1} alt={isSignUp ? "Sign up image" : "Sign in image"} />
+            </ImageContainer>
+            <FormContainer isSignUp={isSignUp}>
+                {isSignUp ? <SignUpForm /> : <SignInForm />}
+                <p>
+                    {isSignUp ? "Already have an account?" : "Don't have an account?"}
+                    <span style={{ cursor: "pointer", color: "blue" }} onClick={toggleAuth}>
+                        {isSignUp ? " Sign In" : " Sign Up"}
+                    </span>
+                </p>
             </FormContainer>
-            
-
-        </Container>
+        </Wrapper>
+      </Container>
     );
-}
+};
 
 export default AuthForm;
 
