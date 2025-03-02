@@ -1,16 +1,9 @@
 import styled from "styled-components";
 import {Field} from "formik";
+import { FcGoogle } from "react-icons/fc";
 
 export const FormContainer = styled.div`
   background: #F7F3FA;
-//   padding: 30px;
-//   border-radius: 10px;
-//   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-// //   width: 450px;
-// //   height: 250px;
-//   text-align: center;
-//   width: 100%;
-//   height:100%;
 `;
 
 export const Title = styled.h3`
@@ -41,31 +34,39 @@ export const StyledField = styled(Field)`
   }
 `;
 
-export const FloatingLabel = styled.div`
-  position: relative;
-  width: 100%;
-  //margin-top: 15px;
+// export const FloatingLabel = styled.div`
+//   position: relative;
+//   width: 100%;
 
-  label {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 14px;
-    color: #777;
-    transition: all 0.3s;
-    pointer-events: none;
-  }
+//   label {
+//     position: absolute;
+//     left: 15px;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     font-size: 14px;
+//     color: #777;
+//     transition: all 0.3s;
+//     pointer-events: none;
+//   }
 
-  input:focus + label,
-  input:not(:placeholder-shown) + label {
-    top: 5px;
-    font-size: 12px;
-    color: #007bff;
-  }
+//   input:focus + label,
+//   input:not(:placeholder-shown) + label {
+//     top: 5px;
+//     font-size: 12px;
+//     color: #007bff;
+//   }
+// `;
+
+
+export const GoogleIcon = styled(FcGoogle)`
+  width: 20px;
+  height: 15px;
+  margin-right: 10px;
 `;
 
 export const SubmitButton = styled.button`
+  display: flex;
+  justify-content: center;
   width: 100%;
   padding: 10px;
   margin-top: 20px;
@@ -90,15 +91,14 @@ export const HorizontalLineContainer = styled.div`
     margin-top: 20px;
 
     & hr {
-        // flex: 1;
         width: 100px;
         border: 0;
-        border-top: 2px solid #ccc; /* Style the horizontal line */
+        border-top: 2px solid #ccc;
     }
 
     & span {
-        padding: 0 5px; /* Spacing around the text */
-        color: #ccc; /* Text color */
-        font-weight: bold; /* Font weight */
+        padding: 0 5px;
+        color: #ccc;
+        font-weight: bold;
     }
 `

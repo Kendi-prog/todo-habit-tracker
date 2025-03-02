@@ -11,8 +11,9 @@ import {
     Title, 
     TitleText,
     StyledField, 
-    FloatingLabel, 
-    SubmitButton 
+    SubmitButton,
+    HorizontalLineContainer,
+    GoogleIcon,
 } from "./sign-up-form.styles";
 
 const SignUpForm = () => {
@@ -76,7 +77,7 @@ const SignUpForm = () => {
             });
 
             alert("Account created successfully");
-            navigate("/signin");
+            navigate("/todo");
         } catch (error) {
             setErrorMessage({ email: "Email already in use"});
         }
@@ -87,7 +88,15 @@ const SignUpForm = () => {
         <FormContainer>
             <Title>Create a free account</Title>
             <TitleText>Your to go to habit tracker app</TitleText>
-            <SubmitButton onClick={() => googleSignUp(googleSignIn)}>Sign Up with Google</SubmitButton>
+            <SubmitButton onClick={() => googleSignUp(googleSignIn)}>
+                <GoogleIcon />
+                Sign up with Google
+            </SubmitButton>
+            <HorizontalLineContainer>
+                <hr />
+                <span>OR</span>
+                <hr />   
+            </HorizontalLineContainer>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -95,26 +104,26 @@ const SignUpForm = () => {
             >
                 {({ isSubmitting }) => (
                     <Form>
-                        <FloatingLabel>
+                        <div>
                             <StyledField type="text" name="username" placeholder="Username" />
                             {/* <label>Username</label> */}
-                            <ErrorMessage name="username" component="FloatingLabel" style={{ color: "red" }} />
-                        </FloatingLabel>
-                        <FloatingLabel>
+                            <ErrorMessage name="username" component="div" style={{ color: "red" }} />
+                        </div>
+                        <div>
                             <StyledField type="email" name="email" placeholder="Email" />
                             {/* <label>Email</label> */}
-                            <ErrorMessage name="email" component="FloatingLabel" style={{ color: "red" }} />
-                        </FloatingLabel>
-                        <FloatingLabel>
+                            <ErrorMessage name="email" component="div" style={{ color: "red" }} />
+                        </div>
+                        <div>
                             <StyledField type="password" name="password" placeholder="Password" />
                             {/* <label>Password</label> */}
-                            <ErrorMessage name="password" component="FloatingLabel" style={{ color: "red" }} />
-                        </FloatingLabel>
-                        <FloatingLabel>
+                            <ErrorMessage name="password" component="div" style={{ color: "red" }} />
+                        </div>
+                        <div>
                             <StyledField type="password" name="confirmPassword" placeholder="Confirm Password" />
                             {/* <label>Confirm Password</label> */}
-                            <ErrorMessage name="confirmPassword" component="FloatingLabel" style={{ color: "red" }} />
-                        </FloatingLabel>
+                            <ErrorMessage name="confirmPassword" component="div" style={{ color: "red" }} />
+                        </div>
                         <SubmitButton type="submit" disabled={isSubmitting}>
                             {isSubmitting ? "Signing up ..." : "Sign Up"}
                         </SubmitButton>

@@ -26,9 +26,8 @@ export const ImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: #F7F3FA;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Added transition */
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   order: ${(props) => (props.isSignUp ? "0" : "1")};
-  //opacity: ${(props) => (props.isSignUp ? "1" : "0")}; /* Fades out when not active */
   transform: ${(props) => (props.isSignUp ? "translateX(0)" : "translateX(-20px)")};
 `;
 
@@ -39,10 +38,9 @@ export const FormContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 20px;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Added transition */
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   order: ${(props) => (props.isSignUp ? "1" : "0")};
-  //opacity: ${(props) => (props.isSignUp ? "1" : "0")}; /* Fades out when not active */
-  transform: ${(props) => (props.isSignUp ? "translateX(0)" : "translateX(-20px)")}; /* Slide effect */
+  transform: ${(props) => (props.isSignUp ? "translateX(0)" : "translateX(-20px)")};
 `;
 
 export const Image = styled.img`

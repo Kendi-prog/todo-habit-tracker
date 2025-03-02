@@ -7,12 +7,12 @@ import { useNavigate } from "react-router-dom";
 
 import firebaseUtils from "../../utils/firebase";
 import { 
-    FloatingLabel,
      FormContainer,
      StyledField,
      SubmitButton,
      Title,
      HorizontalLineContainer,
+     GoogleIcon,
 
 } from "./sign-in-form.styles";
 
@@ -62,16 +62,16 @@ const SignInForm = () => {
             >
                 {({ isSubmitting}) => (
                     <Form>
-                        <FloatingLabel>
+                        <div>
                             <StyledField type="email" name="email" placeholder="Email" />
                             <ErrorMessage name="email"/>
                             {/* <MdEmail /> */}
-                        </FloatingLabel>
-                        <FloatingLabel>
+                        </div>
+                        <div>
                             <StyledField type="password" name="password" placeholder="Password" />
                             <ErrorMessage name="password"/>
                             {/* <MdLock /> */}
-                        </FloatingLabel>
+                        </div>
                         <SubmitButton type="submit" disabled={isSubmitting}>
                             {isSubmitting ? "Signing in ..." : "Sign In"}
                         </SubmitButton>
@@ -85,6 +85,7 @@ const SignInForm = () => {
                     <hr />   
                 </HorizontalLineContainer>
                 <SubmitButton onClick={() => handleGoogleSignIn(googleSignIn)}>
+                    <GoogleIcon />
                     Sign in with Google
                 </SubmitButton>
             </div>
