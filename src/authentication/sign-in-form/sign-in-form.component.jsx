@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,7 @@ import {
      GoogleIcon,
      RememberMe,
      RememberMeInput,
+     ErrorMessageContainer,
 
 } from "./sign-in-form.styles";
 
@@ -43,7 +44,7 @@ const SignInForm = () => {
         }
     }
 
-    const handleSubmit = async (values, { setSubmitting, setErrorMessage, resetForm }) => {
+    const handleSubmit = async (values, { setSubmitting, setErrorMessageContainer, resetForm }) => {
         try {
             const userCredential = await signInWithEmailAndPassword(
                 auth, values.email, values.password
@@ -58,7 +59,7 @@ const SignInForm = () => {
             navigate("/todo");
             resetForm();
         } catch (error) {
-            setErrorMessage({ email: "Incorrect email or password"});
+            setErrorMessageContainer({ email: "Incorrect email or password"});
         }
         setSubmitting(false);
     }
@@ -75,13 +76,11 @@ const SignInForm = () => {
                     <Form>
                         <div>
                             <StyledField type="email" name="email" placeholder="Email" />
-                            <ErrorMessage name="email"/>
-                            {/* <MdEmail /> */}
+                            <ErrorMessageContainer name="email" component="div"/>
                         </div>
                         <div>
                             <StyledField type="password" name="password" placeholder="Password" />
-                            <ErrorMessage name="password"/>
-                            {/* <MdLock /> */}
+                            <ErrorMessageContainer name="password" component="div"/>
                         </div>
                         <RememberMe>
                             <label>

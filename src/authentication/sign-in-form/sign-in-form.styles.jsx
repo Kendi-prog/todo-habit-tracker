@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Field} from "formik";
+import {Field, ErrorMessage} from "formik";
 import { FcGoogle } from "react-icons/fc";
 
 export const FormContainer = styled.div`
@@ -32,6 +32,12 @@ export const StyledField = styled(Field)`
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   }
+`;
+
+export const ErrorMessageContainer = styled(ErrorMessage)`
+  font-size: 13px;
+  color: rgb(134, 9, 9);
+  margin-left: 5px;
 `;
 
 export const RememberMe = styled.div`

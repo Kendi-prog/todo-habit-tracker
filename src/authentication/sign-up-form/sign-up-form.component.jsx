@@ -14,6 +14,7 @@ import {
     SubmitButton,
     HorizontalLineContainer,
     GoogleIcon,
+    ErrorMessageContainer,
 } from "./sign-up-form.styles";
 
 const SignUpForm = () => {
@@ -106,23 +107,19 @@ const SignUpForm = () => {
                     <Form>
                         <div>
                             <StyledField type="text" name="username" placeholder="Username" />
-                            {/* <label>Username</label> */}
-                            <ErrorMessage name="username" component="div" style={{ color: "red" }} />
+                            <ErrorMessageContainer name="username" component="div" />
                         </div>
                         <div>
                             <StyledField type="email" name="email" placeholder="Email" />
-                            {/* <label>Email</label> */}
-                            <ErrorMessage name="email" component="div" style={{ color: "red" }} />
+                            <ErrorMessageContainer name="email" component="div" />
                         </div>
                         <div>
                             <StyledField type="password" name="password" placeholder="Password" />
-                            {/* <label>Password</label> */}
-                            <ErrorMessage name="password" component="div" style={{ color: "red" }} />
+                            <ErrorMessageContainer name="password" component="div" />
                         </div>
                         <div>
                             <StyledField type="password" name="confirmPassword" placeholder="Confirm Password" />
-                            {/* <label>Confirm Password</label> */}
-                            <ErrorMessage name="confirmPassword" component="div" style={{ color: "red" }} />
+                            <ErrorMessageContainer name="confirmPassword" component="div" />
                         </div>
                         <SubmitButton type="submit" disabled={isSubmitting}>
                             {isSubmitting ? "Signing up ..." : "Sign Up"}
