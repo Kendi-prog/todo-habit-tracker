@@ -34,28 +34,15 @@ export const StyledField = styled(Field)`
   }
 `;
 
-// export const FloatingLabel = styled.div`
-//   position: relative;
-//   width: 100%;
+export const RememberMe = styled.div`
+  margin-top: 15px;
+  
+`;
 
-//   label {
-//     position: absolute;
-//     left: 15px;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     font-size: 14px;
-//     color: #777;
-//     transition: all 0.3s;
-//     pointer-events: none;
-//   }
-
-//   input:focus + label,
-//   input:not(:placeholder-shown) + label {
-//     top: 5px;
-//     font-size: 12px;
-//     color: #007bff;
-//   }
-// `;
+export const RememberMeInput = styled.input`
+  margin-right: 10px;
+  color: #7600bc;
+`
 
 
 export const GoogleIcon = styled(FcGoogle)`

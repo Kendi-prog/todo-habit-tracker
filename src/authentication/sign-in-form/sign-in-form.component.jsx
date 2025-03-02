@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-// import { MdEmail, MdLock } from "react-icons/md";
+import Cookies from "js-cookie";
 
 import firebaseUtils from "../../utils/firebase";
 import { 
@@ -13,12 +13,15 @@ import {
      Title,
      HorizontalLineContainer,
      GoogleIcon,
+     RememberMe,
+     RememberMeInput,
 
 } from "./sign-in-form.styles";
 
 
 const SignInForm = () => {
     const navigate = useNavigate();
+    const [rememberMe, setRememberMe] = useState(false);
 
     const initialValues = {
         email: "",
@@ -42,7 +45,15 @@ const SignInForm = () => {
 
     const handleSubmit = async (values, { setSubmitting, setErrorMessage, resetForm }) => {
         try {
-            await signInWithEmailAndPassword(auth, values.email, values.password);
+            const userCredential = await signInWithEmailAndPassword(
+                auth, values.email, values.password
+            );
+            const accessToken = await userCredential.user.getIdToken();
+
+            if(rememberMe) {
+                Cookies.set("accessToken", accessToken, { expires: 30 });
+            }
+
             alert("Sign In Successful");
             navigate("/todo");
             resetForm();
@@ -72,6 +83,16 @@ const SignInForm = () => {
                             <ErrorMessage name="password"/>
                             {/* <MdLock /> */}
                         </div>
+                        <RememberMe>
+                            <label>
+                                <RememberMeInput 
+                                    type="checkbox"
+                                    checked={rememberMe}
+                                    onChange={() => setRememberMe(!rememberMe)}
+                                />
+                                Remember me
+                            </label>
+                        </RememberMe>
                         <SubmitButton type="submit" disabled={isSubmitting}>
                             {isSubmitting ? "Signing in ..." : "Sign In"}
                         </SubmitButton>
